@@ -1,5 +1,14 @@
 # @altafusion/fugue-nuxt-ui
 
+## 0.3.0
+
+### Patch Changes
+
+- Updated dependencies [da3fca4]
+- Updated dependencies [91aea5e]
+  - @altafusion/nuxt-base@0.3.0
+  - @altafusion/eslint-config@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

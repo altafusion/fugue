@@ -1,5 +1,16 @@
 # @altafusion/fugue-content
 
+## 0.3.0
+
+### Patch Changes
+
+- Updated dependencies [da3fca4]
+- Updated dependencies [da3fca4]
+  - @altafusion/nuxt-base@0.3.0
+  - @altafusion/fugue-theme@0.3.0
+  - @altafusion/fugue-simple-auth@0.3.0
+  - @altafusion/shell@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

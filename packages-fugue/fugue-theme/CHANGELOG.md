@@ -1,5 +1,17 @@
 # @altafusion/fugue-theme
 
+## 0.3.0
+
+### Minor Changes
+
+- da3fca4: Rename the light/dark state key from `sse:theme` to `fugue:theme`, and drop the one-time localStorage migration from legacy workflow and recipe keys in `@altafusion/fugue-workflow`. Code that reads `useState('sse:theme')` directly must use the new key.
+
+### Patch Changes
+
+- Updated dependencies [da3fca4]
+  - @altafusion/nuxt-base@0.3.0
+  - @altafusion/fugue-nuxt-ui@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
