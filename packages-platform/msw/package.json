@@ -1,0 +1,38 @@
+{
+  "name": "@altafusion/msw",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared MSW infrastructure for Altafusion apps — browser/node setup, mock DB helpers, optional shared handlers",
+  "exports": {
+    ".": "./src/client.ts",
+    "./browser": "./src/browser.ts",
+    "./node": "./src/node.ts",
+    "./env": "./src/env.ts",
+    "./worker-options": "./src/worker-options.ts",
+    "./utils/mockDb": "./src/utils/mockDb.ts",
+    "./utils/jsonResponse": "./src/utils/jsonResponse.ts",
+    "./handlers/shared": "./src/handlers/shared/index.ts",
+    "./vite-aliases": "./vite-aliases.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "msw": "catalog:testing"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@altafusion/test-kit": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "happy-dom": "catalog:testing",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev",
+    "vitest": "catalog:testing"
+  }
+}

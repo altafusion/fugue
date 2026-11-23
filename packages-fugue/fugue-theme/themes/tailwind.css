@@ -1,0 +1,55 @@
+/**
+ * Product-agnostic Tailwind theme entry — chains unbranded root from @altafusion/fugue-nuxt-ui, then default @theme.
+ * Order matters: base root → @theme extensions → debug (Docus docs layout breaks without @nuxt/ui in the chain).
+ */
+@import "@altafusion/fugue-nuxt-ui/assets/css/nuxt-ui.css";
+
+@theme static {
+  --font-sans:
+    Inter,
+    system-ui,
+    Avenir,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  --font-heading:
+    Inter,
+    system-ui,
+    Avenir,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  /* Type scale mirrors tokens/base.css so text-* utilities and --font-size-* agree.
+     xs and sm stay on Tailwind defaults — they drive Nuxt UI chrome. */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.47;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.5rem;
+  /* Display / hero (Nuxt UI page hero defaults use 5xl→7xl; define so overrides compile). */
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1.05;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1.05;
+  --text-8xl: 5.25rem;
+  --text-8xl--line-height: 1;
+
+  --color-green-50: #EFFDF5;
+  --color-green-100: #D9FBE8;
+  --color-green-200: #B3F5D1;
+  --color-green-300: #75EDAE;
+  --color-green-400: #00DC82;
+  --color-green-500: #00C16A;
+  --color-green-600: #00A155;
+  --color-green-700: #007F45;
+  --color-green-800: #016538;
+  --color-green-900: #0A5331;
+  --color-green-950: #052E16;
+}
+
+@import "./debug.css";

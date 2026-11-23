@@ -1,0 +1,69 @@
+{
+  "name": "@altafusion/fugue-content",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Nuxt layer for Fugue Content sites — editorial pages, Studio, and MDC, composed with shell.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./define-site": "./lib/define-site.ts",
+    "./site-config-registry": "./lib/site-config-registry.ts",
+    "./qe-tools": "./lib/qe-tools/index.ts",
+    "./qe-tools/studio-drafts": "./lib/qe-tools/studio-drafts.ts",
+    "./types": "./types/site.ts"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "prepare:types": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs prepare",
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist && node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "pnpm --dir ../.. exec vitest run --project fugue-content",
+    "prelint": "pnpm run prepare:types",
+    "prelint:fix": "pnpm run prepare:types"
+  },
+  "peerDependencies": {
+    "@altafusion/fugue-theme": "workspace:*",
+    "better-sqlite3": "catalog:content",
+    "h3": "^1.15.0",
+    "nuxt": "catalog:apps",
+    "vue": "catalog:apps",
+    "vue-router": "catalog:apps"
+  },
+  "dependencies": {
+    "@altafusion/fugue-simple-auth": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@altafusion/shell": "workspace:*",
+    "@nuxt/content": "catalog:content",
+    "@nuxt/kit": "catalog:apps",
+    "@nuxtjs/i18n": "catalog:content",
+    "defu": "^6.1.7",
+    "nuxt-studio": "catalog:content",
+    "ufo": "catalog:utils"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/fugue-theme": "workspace:*",
+    "@iconify-json/lucide": "catalog:ui",
+    "@types/node": "catalog:dev",
+    "better-sqlite3": "catalog:content",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:testing",
+    "vue": "catalog:apps",
+    "vue-router": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "@altafusion/fugue-theme",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Optional Fugue theme layer — neutral tokens, theme CSS, Tailwind entry, dark-canvas",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./nuxt.config.ts",
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./themes/tokens.css": "./themes/tokens.css",
+    "./themes/theme.css": "./themes/theme.css",
+    "./themes/tailwind.css": "./themes/tailwind.css",
+    "./themes/debug.css": "./themes/debug.css",
+    "./dark-canvas": "./dark-canvas.ts",
+    "./lib/dark-canvas": "./lib/dark-canvas.ts"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @altafusion/fugue-theme-playground dev",
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0"
+  },
+  "dependencies": {
+    "@altafusion/fugue-nuxt-ui": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@iconify-json/lucide": "catalog:ui",
+    "@iconify-json/simple-icons": "catalog:ui",
+    "@nuxt/eslint": "catalog:dev",
+    "@nuxt/icon": "catalog:ui",
+    "@nuxt/ui": "catalog:ui",
+    "tailwindcss": "catalog:ui"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vue": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

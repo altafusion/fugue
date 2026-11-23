@@ -1,0 +1,46 @@
+{
+  "name": "@altafusion/fugue-nuxt-ui",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Unbranded Nuxt UI + Tailwind base layer for the Fugue family (no product brand tokens or fonts)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./assets/css/nuxt-ui.css": "./assets/css/nuxt-ui.css"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0"
+  },
+  "dependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@nuxt/eslint": "catalog:dev",
+    "@nuxt/icon": "catalog:ui",
+    "@nuxt/ui": "catalog:ui",
+    "tailwindcss": "catalog:ui"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vue": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

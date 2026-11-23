@@ -1,0 +1,5 @@
+export { createStorage } from './createStorage'
+export type { StorageAPI } from './types'
+export { formatStorageKey, STORAGE_KEY_SEPARATOR } from './types'
+export { useNamespacedStorage } from './useNamespacedStorage'
+export type { UseNamespacedStorageOptions } from './useNamespacedStorage'

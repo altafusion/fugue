@@ -1,0 +1,89 @@
+/**
+ * Component-level design tokens
+ * 
+ * These tokens are built on semantic tokens and provide component-specific
+ * styling that can be overridden per app if needed.
+ */
+
+:root {
+  /* ===== BUTTON TOKENS ===== */
+  --button-padding-x: var(--space-4);
+  --button-padding-y: var(--space-2);
+  --button-font-size: var(--font-size-sm);
+  --button-font-weight: var(--font-weight-medium);
+  --button-border-radius: var(--border-radius-md);
+  --button-border-width: var(--border-width);
+  --button-transition: var(--transition-fast);
+  
+  /* Button variants */
+  --button-primary-bg: var(--color-primary);
+  --button-primary-bg-hover: var(--color-primary-hover);
+  --button-primary-bg-active: var(--color-primary-active);
+  --button-primary-text: var(--color-text-inverse);
+  --button-primary-border: var(--color-primary);
+  
+  --button-secondary-bg: var(--color-surface);
+  --button-secondary-bg-hover: var(--color-surface-hover);
+  --button-secondary-bg-active: var(--color-surface-active);
+  --button-secondary-text: var(--color-text);
+  --button-secondary-border: var(--color-border);
+  
+  --button-danger-bg: var(--color-error);
+  --button-danger-bg-hover: #b91c1c;
+  --button-danger-bg-active: #991b1b;
+  --button-danger-text: var(--color-text-inverse);
+  --button-danger-border: var(--color-error);
+  
+  /* ===== CARD TOKENS ===== */
+  --card-bg: var(--color-surface);
+  --card-border: var(--color-border);
+  --card-border-radius: var(--border-radius-lg);
+  --card-padding: var(--space-6);
+  --card-shadow: var(--shadow);
+  
+  /* ===== INPUT TOKENS ===== */
+  --input-bg: var(--color-surface);
+  --input-border: var(--color-border);
+  --input-border-hover: var(--color-border-hover);
+  --input-border-focus: var(--color-border-focus);
+  --input-text: var(--color-text);
+  --input-placeholder: var(--color-text-tertiary);
+  --input-padding-x: var(--space-3);
+  --input-padding-y: var(--space-2);
+  --input-border-radius: var(--border-radius-md);
+  --input-font-size: var(--font-size-base);
+  
+  /* ===== HEADER TOKENS ===== */
+  --header-bg: var(--color-surface);
+  --header-border: var(--color-border);
+  --header-padding-x: var(--space-6);
+  --header-padding-y: var(--space-4);
+  --header-shadow: var(--shadow-sm);
+  
+  /* ===== NAVIGATION TOKENS ===== */
+  --nav-link-color: var(--color-text-secondary);
+  --nav-link-hover-color: var(--color-text);
+  --nav-link-active-color: var(--color-primary);
+  --nav-link-padding-x: var(--space-4);
+  --nav-link-padding-y: var(--space-2);
+  
+  /* ===== MODAL TOKENS ===== */
+  --modal-bg: var(--color-surface);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.5);
+  --modal-border-radius: var(--border-radius-xl);
+  --modal-shadow: var(--shadow-xl);
+  --modal-max-width: 32rem;
+  
+  /* ===== TOOLTIP TOKENS ===== */
+  --tooltip-bg: var(--color-gray-900);
+  --tooltip-text: var(--color-white);
+  --tooltip-padding-x: var(--space-2);
+  --tooltip-padding-y: var(--space-1);
+  --tooltip-font-size: var(--font-size-xs);
+  --tooltip-border-radius: var(--border-radius);
+}
+
+[data-theme="dark"] {
+  --tooltip-bg: var(--color-gray-700);
+  --tooltip-text: var(--color-gray-50);
+}

@@ -1,0 +1,34 @@
+/**
+ * Shell layout canvas — applies to all header visual styles.
+ */
+@layer base {
+  .shell {
+    min-height: 100dvh;
+    background-color: var(--ui-bg);
+    color: var(--ui-text);
+  }
+
+  main.shell-main:not(.shell-main--padded) {
+    min-height: unset;
+    padding: 0;
+    background-color: var(--ui-bg);
+  }
+
+  main.shell-main.shell-main--padded {
+    min-height: unset;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    background-color: var(--ui-bg);
+  }
+
+  .shell:has(.landing-header--fixed) main.shell-main {
+    padding-top: var(--shell-header-height, 2.5rem);
+  }
+
+  /* Static landing header — content does not need fixed offset */
+  .shell:has(.landing-header--static) main.shell-main {
+    padding-top: 0;
+  }
+}

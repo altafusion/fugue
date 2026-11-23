@@ -1,0 +1,63 @@
+{
+  "name": "@altafusion/nuxt-base",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Base Nuxt layer and configuration for Altafusion packages",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./modules": "./modules.ts",
+    "./typescript": "./typescript.ts",
+    "./dev/open-browser": "./dev/open-browser.ts",
+    "./dev/ports": "./dev/ports.ts",
+    "./dev/reuse-dev-browser": "./dev/reuse-dev-browser.ts",
+    "./modules/docus-typecheck": "./modules/docus-typecheck.ts",
+    "./dev/nuxt-dev": "./dev/nuxt-dev.mjs",
+    "./ui-theme": "./lib/nuxt-ui-theme.ts",
+    "./tsconfig.template.json": "./tsconfig.template.json"
+  },
+  "main": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "pnpm --dir ../.. exec vitest run --project nuxt-base"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0",
+    "vite": ">=6.0.0"
+  },
+  "dependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@nuxt/kit": "catalog:apps",
+    "defu": "catalog:utils",
+    "nuxt": "catalog:apps",
+    "open": "catalog:dev",
+    "vue": "catalog:apps",
+    "vue-router": "catalog:apps"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:testing",
+    "vue-tsc": "catalog:dev"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules",
+    "!dev/reset-fugue-content-site.mjs"
+  ],
+  "bin": {
+    "altafusion-nuxt-cli": "./dev/nuxt-cli.mjs",
+    "altafusion-nuxt-dev": "./dev/nuxt-dev.mjs"
+  }
+}

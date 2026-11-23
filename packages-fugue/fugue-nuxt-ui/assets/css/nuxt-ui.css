@@ -1,0 +1,6 @@
+/**
+ * Unbranded Tailwind + Nuxt UI root. Order matters: tailwind → @nuxt/ui.
+ * Theme layers (@altafusion/fugue-theme, app-local) chain-import this file and add @theme extensions.
+ */
+@import "tailwindcss";
+@import "@nuxt/ui";

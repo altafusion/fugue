@@ -1,0 +1,179 @@
+# App user onboarding — exercises orchestrator paths deploy flows do not.
+# Recoverable submit: set Home label to `INVALID-RECOVER` on Resources to jump back there.
+workflow: user-onboarding
+version: 1
+entry: role
+basePath: /onboarding
+context:
+  globals:
+    - user
+  persist: true
+stepper:
+  navigable: true
+  closable: true
+  order: transition
+drawer:
+  side: right
+  relocatable: true
+steps:
+  - id: role
+    title: Choose Your Role
+    stepper:
+      label: Role
+      description: How you will use the workspace
+    interactions:
+      inputs:
+        - field: role
+          type: tiles
+          variant: feature
+          invalidatesDownstream: true
+          required: true
+          options:
+            - id: admin
+              label: Admin
+              hint: Manage teams, layout, and shared resources
+              icon: i-lucide-shield
+            - id: builder
+              label: Builder
+              hint: Create projects and connect integrations
+              icon: i-lucide-hammer
+            - id: viewer
+              label: Viewer
+              hint: Read-only access to shared content
+              icon: i-lucide-eye
+      transitions:
+        - when: "role == 'admin'"
+          target: workspaceFocus
+        - when: "role != 'admin'"
+          target: layout
+    output:
+      produces:
+        - role
+
+  - id: workspaceFocus
+    title: Workspace Focus
+    stepper:
+      label: Workspace
+      description: Team setup for admins
+      navigable: true
+      closable: true
+    presentation: drawer
+    requires:
+      - role
+    interactions:
+      inputs:
+        - field: teamFocus
+          type: select
+          required: true
+          source:
+            effect: fetch
+            handler: loadTeamFocusOptions
+      transitions:
+        - target: layout
+    output:
+      produces:
+        - teamFocus
+
+  - id: layout
+    title: Layout Preference
+    stepper:
+      label: Layout
+      description: Dense console or guided home experience
+    requires:
+      - role
+    interactions:
+      inputs:
+        - field: layout
+          type: select
+          required: true
+          source:
+            effect: fetch
+            handler: loadLayoutOptions
+      transitions:
+        - target: resources
+    output:
+      produces:
+        - layout
+
+  - id: resources
+    title: Pin Areas & Home Label
+    stepper:
+      label: Resources
+      description: Choose pin areas and name your home view
+    requires:
+      - role
+      - layout
+    interactions:
+      inputs:
+        - field: pinProjects
+          type: toggle
+          label: Projects
+          default: true
+        - field: pinDocs
+          type: toggle
+          label: Docs
+          default: false
+        - field: pinStations
+          type: toggle
+          label: Stations
+          default: false
+        - field: pinSharedModels
+          type: toggle
+          label: Shared Models
+          default: false
+        - field: displayName
+          type: text
+          required: true
+          note: Use home label `INVALID-RECOVER` to exercise recoverable submit errors
+          validate: displayNameValid
+        - field: adminShortcuts
+          type: toggle
+          when: showAdminShortcuts
+          note: Shown only when the registry guard approves admin dense-console shortcuts
+      transitions:
+        - target: confirm
+    output:
+      produces:
+        - pinProjects
+        - pinDocs
+        - pinStations
+        - pinSharedModels
+        - displayName
+        - adminShortcuts
+
+  - id: confirm
+    title: Review & Submit
+    stepper:
+      label: Confirm
+      description: Confirm your onboarding choices
+    requires:
+      - role
+      - layout
+      - displayName
+    interactions:
+      actions:
+        - id: submit
+          label: Complete Onboarding
+          effect: mutate
+          handler: submitUserOnboarding
+          onError: stay
+      transitions:
+        - on: submit.success
+          target: done
+    output:
+      produces:
+        - onboardingId
+        - welcomeCode
+
+  - id: done
+    title: Onboarding Complete
+    stepper:
+      label: Done
+      description: Your workspace is ready
+    requires:
+      - onboardingId
+      - welcomeCode
+    interactions:
+      transitions: []
+    footer:
+      note: Your preferences are saved. Reload the playground to run the flow again from scratch.

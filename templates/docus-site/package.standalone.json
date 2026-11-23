@@ -1,0 +1,32 @@
+{
+  "name": "@your-org/your-docs",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "packageManager": "pnpm@11.5.2",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "postinstall": "nuxt prepare",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.16.2",
+    "@takumi-rs/core": "^2.16.2",
+    "better-sqlite3": "^12.11.1",
+    "docus": "^5.15.0",
+    "nuxt": "^4.6.1",
+    "nuxt-studio": "^1.8.0",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.13"
+  }
+}

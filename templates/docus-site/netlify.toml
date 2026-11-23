@@ -1,0 +1,17 @@
+# Standalone docs repo — build at repository root.
+# Netlify UI: leave Base directory and Package directory empty.
+#
+# Environment (rename MY_DOCS → your auth envPrefix):
+#   Builds:    MY_DOCS_AUTH_ENABLED=true, GITHUB_TOKEN (read private altafusion-monorepo)
+#   Functions: MY_DOCS_ACCESS_KEY, STUDIO_GOOGLE_*, STUDIO_GITHUB_TOKEN
+
+[build]
+command = "bash scripts/netlify-build.sh"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "24"
+NODE_OPTIONS = "--max-old-space-size=4096"
+MY_DOCS_AUTH_ENABLED = "true"
+# Skip Netlify's pre-command `pnpm install` (cannot auth to private altafusion-monorepo).
+PNPM_FLAGS = "--version"

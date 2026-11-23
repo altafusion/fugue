@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "content.config.ts",
+    "lib/**/*.ts",
+    "types/**/*.d.ts",
+    "types/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts"
+  ]
+}

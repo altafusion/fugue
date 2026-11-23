@@ -1,0 +1,11 @@
+{
+  "// Note": "Nuxt automatically generates comprehensive TypeScript config in .nuxt/",
+  "// Purpose": "This file exists for IDE/editor integration only",
+  "references": [
+    { "path": "./.nuxt/tsconfig.app.json" },
+    { "path": "./.nuxt/tsconfig.server.json" },
+    { "path": "./.nuxt/tsconfig.shared.json" },
+    { "path": "./.nuxt/tsconfig.node.json" }
+  ],
+  "files": []
+}

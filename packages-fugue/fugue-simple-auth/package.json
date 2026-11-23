@@ -1,0 +1,51 @@
+{
+  "name": "@altafusion/fugue-simple-auth",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Optional access-key gate for Nuxt apps — session cookie, SSR-safe Netlify deploy",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./lib/*": "./lib/*.ts",
+    "./composables/*": "./composables/*.ts",
+    "./types/*": "./types/*.ts"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "@nuxt/ui": "^4.0.0",
+    "nuxt": ">=4.0.0",
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@nuxt/kit": "catalog:apps",
+    "defu": "^6.1.7"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@nuxt/ui": "catalog:ui",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:testing",
+    "vue": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

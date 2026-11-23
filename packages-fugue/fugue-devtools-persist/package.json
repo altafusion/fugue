@@ -1,0 +1,23 @@
+{
+  "name": "@altafusion/fugue-devtools-persist",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Framework-agnostic devtools persist helpers — Fugue family (no Nuxt/Vue peers)",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@altafusion/fugue-storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "typescript": "catalog:dev"
+  }
+}

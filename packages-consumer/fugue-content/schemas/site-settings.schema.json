@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://altafusion.com/schemas/site-settings.json",
+  "title": "Fugue Content settings",
+  "description": "Locale-aware site metadata and optional one-page landing manifest (@altafusion/fugue-content settings collection).",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "siteName": { "type": "string" },
+    "phone": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "region": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "hours": { "type": "string" },
+    "mapEmbedUrl": { "type": "string", "format": "uri" },
+    "social": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instagram": { "type": "string" },
+        "facebook": { "type": "string" }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "titleTemplate": { "type": "string" },
+        "ogImage": { "type": "string" },
+        "twitterCard": {
+          "type": "string",
+          "enum": ["summary", "summary_large_image"]
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "darkCanvas": {
+          "type": "string",
+          "enum": ["gray", "black"],
+          "description": "Dark mode canvas — gray (default base) or pure black. Overrides palette.ts when set."
+        }
+      }
+    },
+    "landing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sections": {
+          "type": "array",
+          "description": "Ordered one-page landing sections (FugueContentLandingPage).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["slug", "anchor"],
+            "properties": {
+              "slug": {
+                "type": "string",
+                "description": "Fragment file stem when component is FugueContentFragment."
+              },
+              "anchor": {
+                "type": "string",
+                "description": "HTML section id for hash navigation."
+              },
+              "component": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "default": "FugueContentFragment",
+                    "description": "Vue component name shorthand (default FugueContentFragment)."
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["name"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Vue component name."
+                      },
+                      "props": {
+                        "type": "object",
+                        "description": "Props passed to the component. LandingHeroMedia: src, alt, optional contentComponent, slug, mobileHeight, desktopMinHeight, objectFit."
+                      }
+                    }
+                  }
+                ]
+              },
+              "sectionClass": {
+                "type": "string",
+                "description": "Optional wrapper section base class — overrides FugueContentLandingPage sectionClass for this row."
+              },
+              "variant": {
+                "type": "string",
+                "description": "Layout variant suffix, e.g. alt → {sectionClass}--alt."
+              },
+              "nav": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "labelKey": { "type": "string" },
+                  "label": { "type": "string" },
+                  "icon": { "type": "string" },
+                  "id": { "type": "string" },
+                  "to": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

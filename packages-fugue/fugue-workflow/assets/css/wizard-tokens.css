@@ -1,0 +1,34 @@
+/**
+ * @altafusion/fugue-workflow theme tokens
+ * - .fugue-workflow-wizard — shell/drawer geometry (on shell column + drawer content)
+ * - .fugue-workflow-page-header — page header (UPageHeader root; outside wizard column)
+ * TS layout chrome: app/theme/
+ */
+
+.fugue-workflow-wizard {
+  --workflow-drawer-width: 28rem;
+  --workflow-drawer-max-width: 92vw;
+  --workflow-drawer-bottom-min-height: min(24rem, 80vh);
+  --workflow-drawer-bottom-max-height: 85vh;
+}
+
+.fugue-workflow-page-header {
+  /* Match prior py-8 + text-3xl + font-normal + text-lg description */
+  --workflow-page-header-padding-y: 2rem;
+  --workflow-page-title-size: var(--text-3xl, var(--font-size-3xl, 2.5rem));
+  --workflow-page-title-weight: var(--font-weight-normal);
+  --workflow-page-title-margin-bottom: 0;
+  --workflow-page-description-size: var(--text-lg, var(--font-size-lg, 1.125rem));
+
+  padding-block: var(--workflow-page-header-padding-y);
+}
+
+.fugue-workflow-page-header [data-slot="title"] {
+  font-size: var(--workflow-page-title-size);
+  font-weight: var(--workflow-page-title-weight);
+  margin-bottom: var(--workflow-page-title-margin-bottom);
+}
+
+.fugue-workflow-page-header [data-slot="description"] {
+  font-size: var(--workflow-page-description-size);
+}

@@ -1,0 +1,50 @@
+/**
+ * Runtime brand overrides — applied when `html[data-brand="…"]` (see `@altafusion/shell` `brand-theme` plugin).
+ * `default` uses base tokens from `colors.css` (blue primary). Canvas and text unchanged.
+ */
+
+[data-brand='violet'] {
+  --brand-primary: #7c3aed;
+  --brand-primary-hover: #6d28d9;
+  --brand-primary-active: #5b21b6;
+
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-active: var(--brand-primary-active);
+  --color-border-focus: #8b5cf6;
+}
+
+.dark[data-brand='violet'],
+[data-theme='dark'][data-brand='violet'] {
+  --brand-primary: #a78bfa;
+  --brand-primary-hover: #c4b5fd;
+  --brand-primary-active: #8b5cf6;
+
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-active: var(--brand-primary-active);
+  --color-border-focus: #a78bfa;
+}
+
+[data-brand='green'] {
+  --brand-primary: #16a34a;
+  --brand-primary-hover: #15803d;
+  --brand-primary-active: #166534;
+
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-active: var(--brand-primary-active);
+  --color-border-focus: #22c55e;
+}
+
+.dark[data-brand='green'],
+[data-theme='dark'][data-brand='green'] {
+  --brand-primary: #4ade80;
+  --brand-primary-hover: #86efac;
+  --brand-primary-active: #22c55e;
+
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-active: var(--brand-primary-active);
+  --color-border-focus: #4ade80;
+}

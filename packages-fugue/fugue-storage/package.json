@@ -1,0 +1,41 @@
+{
+  "name": "@altafusion/fugue-storage",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Namespaced browser storage for Altafusion fugue packages — VueUse-backed",
+  "exports": {
+    ".": "./index.ts",
+    "./nuxt": "./nuxt.config.ts"
+  },
+  "main": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf dist node_modules/.cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0",
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "nuxt": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:ui"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@types/node": "catalog:dev",
+    "@vueuse/nuxt": "catalog:ui",
+    "eslint": "catalog:dev",
+    "happy-dom": "catalog:testing",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:testing",
+    "vue": "catalog:apps"
+  }
+}

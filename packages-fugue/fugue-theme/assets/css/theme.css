@@ -1,0 +1,5 @@
+/**
+ * Thin re-export — canonical theme entry is `themes/theme.css`.
+ */
+
+@import '../../themes/theme.css';

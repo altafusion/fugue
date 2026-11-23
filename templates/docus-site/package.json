@@ -1,0 +1,37 @@
+{
+  "name": "@altafusion/docus-site-template",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "postinstall": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs prepare",
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs build",
+    "generate": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs generate",
+    "preview": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs preview",
+    "typecheck": "node ../../packages-platform/nuxt-base/dev/nuxt-cli.mjs typecheck"
+  },
+  "dependencies": {
+    "@nuxt/content": "catalog:content",
+    "@takumi-rs/core": "catalog:content",
+    "better-sqlite3": "catalog:content",
+    "docus": "catalog:content",
+    "nuxt": "catalog:apps",
+    "nuxt-studio": "catalog:content",
+    "vue": "catalog:apps"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vue-tsc": "catalog:dev"
+  }
+}

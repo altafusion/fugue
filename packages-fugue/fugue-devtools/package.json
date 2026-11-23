@@ -1,0 +1,36 @@
+{
+  "name": "@altafusion/fugue-devtools",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generic non-modal dev tools drawer for Nuxt apps — Fugue family",
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./persist": "./persist/index.ts"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^5.0.0"
+  },
+  "dependencies": {
+    "@altafusion/fugue-devtools-persist": "workspace:*"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/fugue-ui": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vue": "catalog:apps",
+    "vue-router": "catalog:apps"
+  }
+}

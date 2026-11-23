@@ -1,0 +1,53 @@
+/**
+ * Dev tools panel — dev-only chrome, not product UI.
+ *
+ * Selectors use the `devtools-panel__` prefix. Project adapters may add
+ * their own scoped prefix for domain sections (e.g. `qe-panel__*` in a product adapter).
+ */
+
+.devtools-panel {
+  min-height: 100%;
+  background-color: inherit;
+}
+
+.devtools-panel__surface--drawer {
+  background-color: var(--ui-bg-muted) !important;
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04));
+  outline: 1px solid var(--ui-border);
+}
+
+.devtools-panel__nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.devtools-panel__brand {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ui-text-highlighted, var(--color-primary));
+}
+
+.devtools-panel__section {
+  min-width: 0;
+}
+
+.devtools-panel__section > * + * {
+  margin-top: 0.5rem;
+}
+
+.devtools-panel__section-title {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted, var(--color-text-secondary));
+}

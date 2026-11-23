@@ -1,0 +1,49 @@
+{
+  "name": "@altafusion/fugue-ui",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Generic Vue UI primitives on Nuxt UI — reusable across Altafusion apps",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./components/*": "./components/*.ts",
+    "./utils/brandTheme": "./utils/brandTheme.ts"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "clean": "rm -rf .output .nuxt node_modules/.cache dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0",
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@altafusion/fugue-nuxt-ui": "workspace:*",
+    "@vueuse/core": "catalog:ui",
+    "tailwind-merge": "^3.7.1"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@nuxt/ui": "catalog:ui",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "typescript": "catalog:dev",
+    "vue": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

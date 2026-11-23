@@ -1,0 +1,46 @@
+{
+  "name": "@altafusion/fugue-workflow",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Domain-free workflow orchestrator engine and generic wizard UI — Nuxt layer",
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./orchestrator": "./app/orchestrator.ts"
+  },
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "pnpm --filter @altafusion/fugue-workflow-playground dev",
+    "test": "pnpm --dir ../.. exec vitest run --project fugue-workflow",
+    "test:watch": "pnpm --dir ../.. exec vitest --project fugue-workflow",
+    "test:e2e": "pnpm --filter @altafusion/fugue-workflow-playground test:e2e",
+    "test:e2e:headed": "pnpm --filter @altafusion/fugue-workflow-playground test:e2e:headed",
+    "test:e2e:ui": "pnpm --filter @altafusion/fugue-workflow-playground test:e2e:ui",
+    "test:e2e:debug": "pnpm --filter @altafusion/fugue-workflow-playground test:e2e:debug",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "nuxt": ">=4.0.0",
+    "vue": "^3.5.0",
+    "pinia": ">=3.0.0"
+  },
+  "dependencies": {
+    "@altafusion/fugue-ui": "workspace:*",
+    "@pinia/nuxt": "catalog:ui",
+    "js-yaml": "catalog:utils",
+    "zod": "catalog:validation"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "@nuxt/ui": "catalog:ui",
+    "@types/js-yaml": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "nuxt": "catalog:apps",
+    "pinia": "catalog:ui",
+    "typescript": "catalog:dev",
+    "vue": "catalog:apps"
+  }
+}

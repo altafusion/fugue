@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "#devtools/*": ["./packages-fugue/fugue-devtools/*"],
+      "#msw/*": ["./packages-platform/msw/src/*"],
+      "@altafusion/eslint-config/*": ["./packages-platform/eslint-config/*"],
+      "@altafusion/nuxt-base/*": ["./packages-platform/nuxt-base/*"],
+      "@altafusion/test-kit/*": ["./packages-platform/test-kit/*"],
+      "@altafusion/msw/*": ["./packages-platform/msw/src/*"],
+      "@altafusion/fugue-storage/*": ["./packages-fugue/fugue-storage/*"],
+      "@altafusion/fugue-devtools/*": ["./packages-fugue/fugue-devtools/*"]
+    }
+  }
+}

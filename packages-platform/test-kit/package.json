@@ -1,0 +1,55 @@
+{
+  "name": "@altafusion/test-kit",
+  "type": "module",
+  "version": "0.2.0",
+  "description": "Test kit for Altafusion packages — Vitest, Nuxt test utils, MSW",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./vitest": "./vitest.config.base.ts",
+    "./vitest-app": "./vitest-app.ts",
+    "./nuxt": "./nuxt.ts",
+    "./playwright": "./playwright.ts"
+  },
+  "peerDependencies": {
+    "@nuxt/test-utils": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/test-utils": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run --project test-kit",
+    "test:watch": "pnpm --dir ../.. exec vitest --project test-kit",
+    "test:ui": "pnpm --dir ../.. exec vitest --ui --project test-kit",
+    "test:coverage": "pnpm --dir ../.. exec vitest run --coverage --project test-kit"
+  },
+  "dependencies": {
+    "@playwright/test": "catalog:testing",
+    "@vitejs/plugin-vue": "catalog:testing",
+    "vitest": "catalog:testing"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "catalog:testing",
+    "@vitest/coverage-v8": "catalog:testing",
+    "@vitest/ui": "catalog:testing",
+    "@vue/test-utils": "^2.6.0",
+    "happy-dom": "catalog:testing",
+    "msw": "catalog:testing",
+    "vue": "catalog:apps"
+  },
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ]
+}

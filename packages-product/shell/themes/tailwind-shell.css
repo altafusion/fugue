@@ -1,0 +1,35 @@
+/**
+ * Altafusion product Tailwind extensions — Noto typography and shell header height.
+ * Import after `@altafusion/fugue-theme/themes/tailwind.css` in app `main.css`.
+ */
+
+@layer theme {
+  :root {
+    --ui-header-height: calc(var(--shell-header-height, 2.5rem) + 1px);
+  }
+
+  @media (width >= 48rem) {
+    :root {
+      --ui-header-height: calc(3rem + 1px);
+    }
+  }
+}
+
+@theme {
+  --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Noto Sans Display', ui-serif, Georgia, serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+}

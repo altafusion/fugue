@@ -1,0 +1,25 @@
+# Monorepo Netlify site (one site per app in this repo).
+#
+# Netlify UI (Site configuration → Build & deploy → Build settings):
+#   - Base directory: leave empty (repository root)
+#   - Configuration file: templates/fugue-content-site/netlify.toml  (if offered)
+#   - Package directory: templates/fugue-content-site  (monorepo UI — optional if config file path is set)
+#   - Publish directory: templates/fugue-content-site/dist  (from [build] publish below)
+#   - Builds: SITE_AUTH_ENABLED=true (also in [build.environment] below)
+#   - Functions: SITE_ACCESS_KEY, STUDIO_GOOGLE_*, STUDIO_GITHUB_TOKEN
+#
+# Do not set Base directory to templates/fugue-content-site — that breaks SSR function bundling.
+#
+# Operator checklist: developer-docs /fugue-content/starter-template/pilot-deploy-checklist
+
+[build]
+command = "pnpm install --filter @altafusion/fugue-content-site-template... && pnpm --filter @altafusion/fugue-content-site-template build"
+publish = "templates/fugue-content-site/dist"
+
+[build.environment]
+NODE_VERSION = "24"
+NODE_OPTIONS = "--max-old-space-size=4096"
+SITE_AUTH_ENABLED = "true"
+# Limit Netlify's auto `pnpm install` to this app's dependency tree (hoisted
+# monorepo postinstall otherwise runs every workspace package).
+PNPM_FLAGS = "--filter @altafusion/fugue-content-site-template..."

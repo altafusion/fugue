@@ -1,0 +1,209 @@
+/**
+ * Design-system theme entry — product-independent Nuxt UI layer.
+ *
+ * Foundational scales: assets/css/tokens/*; semantic overrides: ./tokens.css.
+ * Critical first-paint values in consuming apps must match tokens.css canvas:
+ * - dark: --color-background (#000000)
+ * - light: --color-background (#ffffff)
+ */
+
+@import '../assets/css/tokens/base.css';
+@import '../assets/css/tokens/dark-canvas.css';
+@import '../assets/css/tokens/colors.css';
+@import './tokens.css';
+@import '../assets/css/tokens/components.css';
+
+:root {
+  /* ===== COMPONENT TOKEN CUSTOMIZATIONS (light) ===== */
+  --button-padding-x: var(--space-5);
+  --button-padding-y: var(--space-2_5);
+  --button-border-radius: var(--border-radius-lg);
+
+  --card-border-radius: var(--border-radius-xl);
+  --card-shadow: var(--shadow-lg);
+  --card-padding: var(--space-8);
+
+  --header-shadow: var(--shadow-md);
+
+  /* AccentSectionCard header (Fugue UI) */
+  --accent-section-title-size: var(--text-sm);
+  --accent-section-title-line-height: 1.35;
+  --accent-section-title-weight: 600;
+  --accent-section-icon-size: 1rem;
+  --accent-section-title-gap: 0.625rem;
+  --accent-section-header-py: var(--space-4, 1rem);
+  --accent-section-header-px: var(--space-6, 1.5rem);
+
+  /* ===== TYPOGRAPHY ===== */
+  /* --font-sans / --font-heading: tailwind.css @theme static */
+  /*
+   * Same scale as tailwind.css @theme static. Unlayered so it wins as soon as this
+   * sheet applies. Otherwise text-5xl paints at Tailwind's 3rem (48px) and jumps
+   * to 3.5rem (56px) when main.css arrives.
+   */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.47;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1.05;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1.05;
+  --text-8xl: 5.25rem;
+  --text-8xl--line-height: 1;
+
+  /*
+   * Unlayered so they beat Nuxt UI's @layer theme defaults (system font, 4rem header).
+   * shell tailwind-shell.css repeats these inside main.css; waiting for that sheet
+   * snaps the header from 64px to 49px and swaps the title face on refresh.
+   */
+  --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Noto Sans Display', ui-serif, Georgia, serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+  --ui-header-height: calc(2.5rem + 1px);
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --ui-header-height: calc(3rem + 1px);
+  }
+}
+
+@reference "./tailwind.css";
+
+@layer components {
+  .accent-section-title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--accent-section-title-gap);
+  }
+
+  .accent-section-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--accent-section-icon-size);
+    height: var(--accent-section-icon-size);
+    @apply text-default;
+  }
+
+  .accent-section-title {
+    margin: 0;
+    min-width: 0;
+    font-size: var(--accent-section-title-size);
+    line-height: var(--accent-section-title-line-height);
+    font-weight: var(--accent-section-title-weight);
+    @apply text-default;
+  }
+}
+
+@layer base {
+  /* ===== GLOBAL RESET & BASE STYLES ===== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: var(--font-sans);
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+  }
+
+  body {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: inherit;
+    letter-spacing: var(--tracking-text);
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  /*
+   * Layout shells (UHeader, UMain, Docus) own structure and spacing.
+   * Color comes from semantic / component tokens only — no global header/main rules.
+   */
+
+  /* ===== TYPOGRAPHY DEFAULTS ===== */
+  /* Size/weight in @layer base so Tailwind utilities can override. */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: var(--line-height-tight);
+    margin-top: 0;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading, var(--font-sans));
+    letter-spacing: var(--tracking-display);
+  }
+
+  h1, h2 {
+    font-weight: var(--font-weight-normal);
+  }
+
+  h3 {
+    font-weight: var(--font-weight-medium);
+  }
+
+  h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-6); }
+  h2 { font-size: var(--font-size-2xl); margin-bottom: var(--space-5); }
+  h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-4); }
+  h4 { font-size: var(--font-size-lg); margin-bottom: var(--space-3); }
+  h5 { font-size: var(--font-size-base); margin-bottom: var(--space-2); }
+  h6 { font-size: var(--font-size-sm); margin-bottom: var(--space-2); }
+
+  h1 {
+    letter-spacing: var(--tracking-display-lg);
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  code, pre, kbd, samp {
+    letter-spacing: normal;
+  }
+
+  /* ===== ACCESSIBILITY & FOCUS STYLES ===== */
+  *:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: -2px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.3s ease;
+}

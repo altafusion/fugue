@@ -1,0 +1,37 @@
+/**
+ * Layout debug borders (xd = debug layout).
+ * Shared by UI (Uno + this file) and Nuxt (via tailwind.css).
+ *
+ * Colors: xdb xdr xdg xdf xdo xdw — 1px dotted
+ * Thick:  xdt — 2px width (pair with a color class, e.g. xdr xdt)
+ *
+ * Grep "xd" to find usages. Not production UX — layout debugging only.
+ */
+
+.xdb {
+  border: 1px dotted #60a5fa; /* blue-400 */
+}
+
+.xdr {
+  border: 1px dotted #f87171; /* red-400 */
+}
+
+.xdg {
+  border: 1px dotted #22c55e; /* green-500 */
+}
+
+.xdf {
+  border: 1px dotted #e879f9; /* fuchsia-400 */
+}
+
+.xdo {
+  border: 1px dotted #fdba74; /* orange-300 */
+}
+
+.xdw {
+  border: 1px dotted #e5e7eb; /* visible on light canvas */
+}
+
+.xdt {
+  border-width: 2px;
+}
