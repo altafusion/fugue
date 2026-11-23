@@ -4,6 +4,15 @@
   "version": "0.2.0",
   "description": "Nuxt layer for Fugue Content sites — editorial pages, Studio, and MDC, composed with shell.",
   "license": "MIT",
+  "homepage": "https://github.com/altafusion/fugue/tree/main/packages-consumer/fugue-content#readme",
+  "bugs": {
+    "url": "https://github.com/altafusion/fugue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altafusion/fugue.git",
+    "directory": "packages-consumer/fugue-content"
+  },
   "publishConfig": {
     "access": "public"
   },

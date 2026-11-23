@@ -4,6 +4,15 @@
   "version": "0.2.0",
   "description": "Unbranded Nuxt UI + Tailwind base layer for the Fugue family (no product brand tokens or fonts)",
   "license": "MIT",
+  "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-nuxt-ui#readme",
+  "bugs": {
+    "url": "https://github.com/altafusion/fugue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altafusion/fugue.git",
+    "directory": "packages-fugue/fugue-nuxt-ui"
+  },
   "publishConfig": {
     "access": "public"
   },
