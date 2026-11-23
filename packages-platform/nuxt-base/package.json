@@ -4,6 +4,15 @@
   "version": "0.2.0",
   "description": "Base Nuxt layer and configuration for Altafusion packages",
   "license": "MIT",
+  "homepage": "https://github.com/altafusion/fugue/tree/main/packages-platform/nuxt-base#readme",
+  "bugs": {
+    "url": "https://github.com/altafusion/fugue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altafusion/fugue.git",
+    "directory": "packages-platform/nuxt-base"
+  },
   "publishConfig": {
     "access": "public"
   },

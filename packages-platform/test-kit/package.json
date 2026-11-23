@@ -4,6 +4,15 @@
   "version": "0.2.0",
   "description": "Test kit for Altafusion packages — Vitest, Nuxt test utils, MSW",
   "license": "MIT",
+  "homepage": "https://github.com/altafusion/fugue/tree/main/packages-platform/test-kit#readme",
+  "bugs": {
+    "url": "https://github.com/altafusion/fugue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altafusion/fugue.git",
+    "directory": "packages-platform/test-kit"
+  },
   "publishConfig": {
     "access": "public"
   },
