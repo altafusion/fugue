@@ -1,5 +1,11 @@
 # @altafusion/eslint-config
 
+## 0.3.0
+
+### Patch Changes
+
+- 91aea5e: Add `repository`, `homepage` and `bugs` fields to the published manifests so npm links to the public repo and release provenance can be verified.
+
 ## 0.2.0
 
 ### Minor Changes

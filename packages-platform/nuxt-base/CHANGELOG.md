@@ -1,5 +1,13 @@
 # @altafusion/nuxt-base
 
+## 0.3.0
+
+### Patch Changes
+
+- da3fca4: Remove dead links to the old documentation site from the package READMEs, and drop a site-specific entry from the `reset-fugue-content-site` helper.
+- Updated dependencies [91aea5e]
+  - @altafusion/eslint-config@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
