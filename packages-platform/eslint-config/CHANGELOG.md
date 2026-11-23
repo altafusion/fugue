@@ -1,5 +1,11 @@
 # @altafusion/eslint-config
 
+## 0.3.1
+
+### Patch Changes
+
+- bc79817: Republish through GitHub Actions to verify npm trusted publishing and provenance. No code changes.
+
 ## 0.3.0
 
 ### Patch Changes
