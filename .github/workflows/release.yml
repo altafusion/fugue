@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   # Lets a release be retried from the Actions tab (runs that fail to start cannot be re-run).
   workflow_dispatch:
 
@@ -32,7 +32,7 @@ jobs:
       # No scripts: nothing here builds an app. Publishing only needs the workspace manifests and the Changesets CLI.
       - run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - uses: changesets/action@v1
+      - uses: changesets/action@v1.9.0
         with:
           version: pnpm version-packages
           # `changeset publish` creates the tags on the runner only; push them, or they are lost with it.
