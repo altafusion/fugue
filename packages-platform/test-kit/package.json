@@ -68,6 +68,7 @@
   "dependencies": {
     "@playwright/test": "catalog:testing",
     "@vitejs/plugin-vue": "catalog:testing",
+    "happy-dom": "catalog:testing",
     "vitest": "catalog:testing"
   },
   "devDependencies": {
@@ -76,7 +77,6 @@
     "@vitest/coverage-v8": "catalog:testing",
     "@vitest/ui": "catalog:testing",
     "@vue/test-utils": "^2.6.0",
-    "happy-dom": "catalog:testing",
     "msw": "catalog:testing",
     "typescript": "catalog:dev",
     "vue": "catalog:apps"

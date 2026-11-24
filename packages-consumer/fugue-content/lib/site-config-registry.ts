@@ -56,16 +56,22 @@ export function fugueContentAuthSection(options: {
   }
 }
 
-/** Standard Nuxt Studio block for monorepo Fugue Content apps. */
+/**
+ * Standard Nuxt Studio block for Fugue Content apps.
+ * `owner` and `repo` name the GitHub repository Studio commits to; they default to this stack's
+ * own repository (kept for existing apps), so standalone sites should always set them.
+ */
 export function fugueContentStudioSection(options: {
   rootDir: string
   messagePrefix: string
+  owner?: string
+  repo?: string
 }): { studio: FugueContentSiteStudioConfig } {
   return {
     studio: {
       repository: {
-        owner: 'altafusion',
-        repo: 'altafusion-monorepo',
+        owner: options.owner ?? 'altafusion',
+        repo: options.repo ?? 'altafusion-monorepo',
         branch: 'main',
         rootDir: options.rootDir
       },
