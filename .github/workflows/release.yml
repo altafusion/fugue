@@ -32,15 +32,16 @@ jobs:
       # No scripts: nothing here builds an app. Publishing only needs the workspace manifests and the Changesets CLI.
       - run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - uses: changesets/action@v1.9.0
+      # v2 is the line that works with @changesets/cli v3. v1 looked for "New tag:" in the publish output, which the
+      # v3 CLI no longer prints, so it published but created no GitHub releases.
+      # `changeset publish` creates the tags on the runner and the action pushes them and creates the releases, using the
+      # CHANGESETS_OUTPUT report it passes to the CLI. The publish script must not wrap or replace that call.
+      - uses: changesets/action@v2.1.2
         with:
-          version: pnpm version-packages
-          # `changeset publish` creates the tags on the runner only; push them, or they are lost with it.
-          # changesets/action splits this string itself and only understands double quotes, so single quotes reach sh unbalanced.
-          publish: sh -c "pnpm release && git push origin --tags"
-          createGithubReleases: true
-          title: 'chore(release): version packages'
-          commit: 'chore(release): version packages'
+          version-script: pnpm version-packages
+          publish-script: pnpm release
+          create-github-releases: true
+          pr-title: 'chore(release): version packages'
+          commit-message: 'chore(release): version packages'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
