@@ -15,6 +15,19 @@ engineStrict: true
 nodeLinker: hoisted
 dedupePeerDependents: true
 
+# Trusted publishers exempt from the default 1-day minimumReleaseAge.
+# Covers the bare packages and their scopes.
+minimumReleaseAgeExclude:
+  - '@altafusion/*'
+  - nuxt
+  - '@nuxt/*'
+  - vue
+  - '@vue/*'
+  - vitest
+  - '@vitest/*'
+  - '@vercel/nft@1.11.12'
+  - nitropack@2.14.0
+
 # Last resort: see .cursor/rules/dependency-updates.mdc. Bump the parent first.
 overrides:
   # @nuxt/content SSR queries break on h3 2.x. Remove once @nuxt/content supports h3 2.
@@ -31,8 +44,8 @@ allowBuilds:
 
 catalogs:
   apps:
-    nuxt: ^4.6.4
-    '@nuxt/kit': ^4.6.4
+    nuxt: ^4.7.0
+    '@nuxt/kit': ^4.7.0
     vue: ^3.5.46
     '@vue/server-renderer': ^3.5.46
     vue-router: ^5.5.1
@@ -79,11 +92,11 @@ catalogs:
     ufo: ^1.6.4
   ui:
     '@headlessui/vue': ^1.7.23
-    '@iconify-json/lucide': ^1.2.157
+    '@iconify-json/lucide': ^1.2.158
     '@iconify-json/simple-icons': ^1.2.103
     '@iconify-json/streamline-sharp': ^1.2.0
     '@nuxt/icon': ^2.6.3
-    '@nuxt/ui': ^4.13.0
+    '@nuxt/ui': ^4.13.1
     '@nuxtjs/tailwindcss': ^6.14.0
     '@pinia/nuxt': ^1.0.3
     '@vueuse/core': ^14.4.0
