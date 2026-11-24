@@ -14,7 +14,31 @@
     "directory": "packages-platform/test-kit"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./vitest": {
+        "types": "./dist/vitest.config.base.d.ts",
+        "default": "./dist/vitest.config.base.js"
+      },
+      "./vitest-app": {
+        "types": "./dist/vitest-app.d.ts",
+        "default": "./dist/vitest-app.js"
+      },
+      "./nuxt": {
+        "types": "./dist/nuxt.d.ts",
+        "default": "./dist/nuxt.js"
+      },
+      "./playwright": {
+        "types": "./dist/playwright.d.ts",
+        "default": "./dist/playwright.js"
+      }
+    }
   },
   "main": "./index.ts",
   "exports": {
@@ -36,7 +60,10 @@
     "test": "pnpm --dir ../.. exec vitest run --project test-kit",
     "test:watch": "pnpm --dir ../.. exec vitest --project test-kit",
     "test:ui": "pnpm --dir ../.. exec vitest --ui --project test-kit",
-    "test:coverage": "pnpm --dir ../.. exec vitest run --coverage --project test-kit"
+    "test:coverage": "pnpm --dir ../.. exec vitest run --coverage --project test-kit",
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "pnpm run build",
+    "postpack": "rm -rf dist"
   },
   "dependencies": {
     "@playwright/test": "catalog:testing",
@@ -45,20 +72,19 @@
   },
   "devDependencies": {
     "@nuxt/test-utils": "catalog:testing",
+    "@types/node": "catalog:dev",
     "@vitest/coverage-v8": "catalog:testing",
     "@vitest/ui": "catalog:testing",
     "@vue/test-utils": "^2.6.0",
     "happy-dom": "catalog:testing",
     "msw": "catalog:testing",
+    "typescript": "catalog:dev",
     "vue": "catalog:apps"
   },
   "files": [
-    "**",
-    "!**/*.test.ts",
-    "!**/.nuxt",
-    "!**/.output",
-    "!**/.data",
-    "!**/coverage",
-    "!**/node_modules"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ]
 }
