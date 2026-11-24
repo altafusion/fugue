@@ -79,7 +79,9 @@ catalogs:
     '@takumi-rs/core': ^2.22.1
     better-sqlite3: ^12.11.1
     docus: ^5.15.0
-    nuxt-studio: ^1.8.2
+    # Fork of nuxt-studio 1.8.2 with the host @nuxtjs/i18n locale fix (upstream PR #501) and the media id quoting fix.
+    # Installed under the original name. Switch back to the plain nuxt-studio range once upstream ships both.
+    nuxt-studio: npm:@altafusion/nuxt-studio@1.8.2-altafusion.1
   validation:
     zod: ^4.6.7
     zod-to-json-schema: ^3.25.2
@@ -105,6 +107,3 @@ catalogs:
     tailwindcss: ^4.3.5
 
 # pnpm 11: allowBuilds only (onlyBuiltDependencies removed upstream).
-
-patchedDependencies:
-  nuxt-studio@1.8.2: patches/nuxt-studio@1.8.2.patch
