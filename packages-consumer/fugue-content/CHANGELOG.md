@@ -1,5 +1,14 @@
 # @altafusion/fugue-content
 
+## 0.3.2
+
+### Patch Changes
+
+- @altafusion/fugue-simple-auth@0.3.2
+  - @altafusion/fugue-theme@0.3.2
+  - @altafusion/nuxt-base@0.3.2
+  - @altafusion/shell@0.3.2
+
 ## 0.3.1
 
 ### Patch Changes
