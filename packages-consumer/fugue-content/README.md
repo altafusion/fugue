@@ -328,7 +328,7 @@ export const siteConfigAuth = {
 
 Feature walkthrough: **[Auth Mode](/fugue-content/starter-template/studio-access-setup#auth-mode-site-manifest)** · **[Configure Google OAuth](/fugue-content/starter-template/studio-access-setup#configure-google-oauth)** · **[User Content Workflows](/fugue-content/starter-template/user-content-workflows)** · **[Studio Module](https://nuxt.studio/setup)** on developer-docs.
 
-**Upstream fixes:** validate a local nuxt-studio checkout before catalog bumps (`pnpm link:nuxt-studio` / `pnpm unlink:nuxt-studio`).
+**Upstream fixes:** since 0.3.5 this package installs `nuxt-studio` from the `@altafusion/nuxt-studio` fork (upstream 1.8.2 plus the host `@nuxtjs/i18n` locale fix from nuxt-studio PR 501 and a media id quoting fix). Sites need no `nuxt-studio` patch. To validate a local nuxt-studio checkout before catalog bumps use `pnpm link:nuxt-studio` / `pnpm unlink:nuxt-studio`; to retire the fork, point `catalogs.content.nuxt-studio` in `pnpm-workspace.yaml` back at the plain `nuxt-studio` range once upstream ships both fixes.
 
 ### qeTools (operator console)
 
