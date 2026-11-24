@@ -14,7 +14,19 @@
     "directory": "packages-platform/eslint-config"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "./dist/eslint.js",
+    "types": "./dist/eslint.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/eslint.d.ts",
+        "default": "./dist/eslint.js"
+      },
+      "./stylistic": {
+        "types": "./dist/stylistic.d.ts",
+        "default": "./dist/stylistic.js"
+      }
+    }
   },
   "exports": {
     ".": "./eslint.ts",
@@ -23,7 +35,10 @@
   "main": "./eslint.ts",
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "pnpm run build",
+    "postpack": "rm -rf dist"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
@@ -32,13 +47,10 @@
     "typescript": "catalog:dev"
   },
   "files": [
-    "**",
-    "!**/*.test.ts",
-    "!**/.nuxt",
-    "!**/.output",
-    "!**/.data",
-    "!**/coverage",
-    "!**/node_modules"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "peerDependencies": {
     "@antfu/eslint-config": "catalog:dev",
