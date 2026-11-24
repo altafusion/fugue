@@ -35,7 +35,9 @@ jobs:
       - uses: changesets/action@v1
         with:
           version: pnpm version-packages
-          publish: pnpm release
+          # `changeset publish` creates the tags on the runner only; push them, or they are lost with it.
+          publish: sh -c 'pnpm release && git push origin --tags'
+          createGithubReleases: true
           title: 'chore(release): version packages'
           commit: 'chore(release): version packages'
         env:
