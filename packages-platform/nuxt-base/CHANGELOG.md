@@ -1,5 +1,12 @@
 # @altafusion/nuxt-base
 
+## 0.3.4
+
+### Patch Changes
+
+- 153c441: Raise the minimum Nuxt tooling versions: `nuxt` and `@nuxt/kit` to `^4.7.0`, `@nuxt/ui` to `^4.13.1` and `@iconify-json/lucide` to `^1.2.158`.
+- @altafusion/eslint-config@0.3.4
+
 ## 0.3.3
 
 ### Patch Changes

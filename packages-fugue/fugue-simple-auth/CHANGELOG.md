@@ -1,5 +1,11 @@
 # @altafusion/fugue-simple-auth
 
+## 0.3.4
+
+### Patch Changes
+
+- 153c441: Raise the minimum Nuxt tooling versions: `nuxt` and `@nuxt/kit` to `^4.7.0`, `@nuxt/ui` to `^4.13.1` and `@iconify-json/lucide` to `^1.2.158`.
+
 ## 0.3.3
 
 No changes in this release.

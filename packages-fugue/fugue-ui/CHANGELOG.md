@@ -1,5 +1,12 @@
 # @altafusion/fugue-ui
 
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies [153c441]
+  - @altafusion/fugue-nuxt-ui@0.3.4
+
 ## 0.3.3
 
 ### Patch Changes
