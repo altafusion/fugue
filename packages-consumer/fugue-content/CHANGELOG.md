@@ -1,5 +1,15 @@
 # @altafusion/fugue-content
 
+## 0.3.5
+
+### Patch Changes
+
+- 1ec7d4f: Install `nuxt-studio` from the `@altafusion/nuxt-studio` fork (1.8.2 plus the host `@nuxtjs/i18n` locale fix from upstream PR 501 and the media id quoting fix). Studio labels no longer show raw `studio.*` keys on sites that use `@nuxtjs/i18n`, and sites no longer need their own `nuxt-studio@1.8.2` patch: delete `patches/nuxt-studio@1.8.2.patch` and its `patchedDependencies` entry when updating, or pnpm reports an unused patch.
+- @altafusion/fugue-simple-auth@0.3.5
+  - @altafusion/fugue-theme@0.3.5
+  - @altafusion/nuxt-base@0.3.5
+  - @altafusion/shell@0.3.5
+
 ## 0.3.4
 
 ### Patch Changes
