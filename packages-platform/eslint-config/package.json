@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/eslint-config",
   "type": "module",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Shared ESLint factories and stylistic defaults for Altafusion platform and product packages",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-platform/eslint-config#readme",

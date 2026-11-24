@@ -1,5 +1,12 @@
 # @altafusion/fugue-theme
 
+## 0.3.3
+
+### Patch Changes
+
+- @altafusion/fugue-nuxt-ui@0.3.3
+  - @altafusion/nuxt-base@0.3.3
+
 ## 0.3.2
 
 ### Patch Changes

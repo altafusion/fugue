@@ -1,5 +1,12 @@
 # @altafusion/nuxt-base
 
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies [1cc8b7e]
+  - @altafusion/eslint-config@0.3.3
+
 ## 0.3.2
 
 ### Patch Changes
