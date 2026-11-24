@@ -36,7 +36,8 @@ jobs:
         with:
           version: pnpm version-packages
           # `changeset publish` creates the tags on the runner only; push them, or they are lost with it.
-          publish: sh -c 'pnpm release && git push origin --tags'
+          # changesets/action splits this string itself and only understands double quotes, so single quotes reach sh unbalanced.
+          publish: sh -c "pnpm release && git push origin --tags"
           createGithubReleases: true
           title: 'chore(release): version packages'
           commit: 'chore(release): version packages'
