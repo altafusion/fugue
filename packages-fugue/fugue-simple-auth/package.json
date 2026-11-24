@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/fugue-simple-auth",
   "type": "module",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Optional access-key gate for Nuxt apps — session cookie, SSR-safe Netlify deploy",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-simple-auth#readme",
