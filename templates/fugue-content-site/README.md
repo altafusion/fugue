@@ -180,6 +180,13 @@ Set **`SITE_DEV_PORT`** / **`PORT`** in **`.env`** (default **8001** — see **`
 
 Root **`pnpm-workspace.yaml`** must set **`nodeLinker: hoisted`** for Content SQLite (same as `developer-docs`).
 
+## Agent Rules
+
+`.cursor/rules/` holds the styling rules a new site starts with: use native Nuxt UI components and conventions first
+(`nuxt-ui-first.mdc`), and style with Tailwind classes and semantic tokens, never scoped CSS (`vue-tailwind-classes.mdc`).
+Cursor loads them natively and `CLAUDE.md` imports them for Claude Code. Edit or add rules there; keep `CLAUDE.md` for what is
+specific to your site.
+
 ## Related
 
 | Template / package | Use |
