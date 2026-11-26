@@ -136,3 +136,6 @@ yarn.lock
 # Local Netlify folder
 .netlify
 auto-imports.d.ts
+
+# Editor config
+.vscode/
