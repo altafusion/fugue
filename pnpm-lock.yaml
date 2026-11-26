@@ -449,13 +449,14 @@ importers:
         version: 5.5.1(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(pinia@4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.46(typescript@6.0.3)))(rolldown@1.2.19)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
 
   packages-fugue/fugue-devtools:
+    dependencies:
+      '@altafusion/fugue-ui':
+        specifier: workspace:*
+        version: link:../fugue-ui
     devDependencies:
       '@altafusion/eslint-config':
         specifier: workspace:*
         version: link:../../packages-platform/eslint-config
-      '@altafusion/fugue-ui':
-        specifier: workspace:*
-        version: link:../fugue-ui
       '@altafusion/nuxt-base':
         specifier: workspace:*
         version: link:../../packages-platform/nuxt-base

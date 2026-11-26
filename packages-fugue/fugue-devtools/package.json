@@ -4,11 +4,33 @@
   "version": "0.1.0",
   "private": true,
   "description": "Generic non-modal dev tools drawer for Nuxt apps — Fugue family",
+  "license": "MIT",
+  "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-devtools#readme",
+  "bugs": {
+    "url": "https://github.com/altafusion/fugue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altafusion/fugue.git",
+    "directory": "packages-fugue/fugue-devtools"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": "./nuxt.config.ts",
     "./persist": "./persist/index.ts"
   },
   "main": "./nuxt.config.ts",
+  "files": [
+    "**",
+    "!**/*.test.ts",
+    "!**/.nuxt",
+    "!**/.output",
+    "!**/.data",
+    "!**/coverage",
+    "!**/node_modules"
+  ],
   "scripts": {
     "clean": "rm -rf .output .nuxt node_modules/.cache dist",
     "lint": "eslint .",
@@ -19,9 +41,11 @@
     "vue": "^3.5.0",
     "vue-router": "^5.0.0"
   },
+  "dependencies": {
+    "@altafusion/fugue-ui": "workspace:*"
+  },
   "devDependencies": {
     "@altafusion/eslint-config": "workspace:*",
-    "@altafusion/fugue-ui": "workspace:*",
     "@altafusion/nuxt-base": "workspace:*",
     "@types/node": "catalog:dev",
     "eslint": "catalog:dev",

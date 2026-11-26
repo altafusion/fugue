@@ -6,6 +6,7 @@
     [
       "@altafusion/eslint-config",
       "@altafusion/fugue-content",
+      "@altafusion/fugue-devtools",
       "@altafusion/fugue-nuxt-ui",
       "@altafusion/fugue-simple-auth",
       "@altafusion/fugue-theme",
