@@ -4,7 +4,7 @@ import {
   getDevToolsStorage,
   readDevToolsPersisted,
   writeDevToolsPersisted,
-} from '@altafusion/fugue-devtools-persist'
+} from '#devtools/persist'
 import { computed, inject, ref, watch } from 'vue'
 import { createDefaultDevToolsChrome, DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import { readDevToolsUrlActivation, stripDevToolsOpenParams } from '#devtools/utils/devtoolsUrlActivation'

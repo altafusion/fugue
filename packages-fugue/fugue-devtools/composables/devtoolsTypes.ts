@@ -1,4 +1,4 @@
-import type { DevToolsChromeState, DevToolsPanelPosition } from '@altafusion/fugue-devtools-persist'
+import type { DevToolsChromeState, DevToolsPanelPosition } from '#devtools/persist'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
 
 export type { DevToolsChromeState, DevToolsPanelPosition }
@@ -6,7 +6,7 @@ export {
   createDefaultDevToolsChrome,
   DEVTOOLS_PANEL_POSITIONS,
   isHorizontalDevToolsDock,
-} from '@altafusion/fugue-devtools-persist'
+} from '#devtools/persist'
 
 export interface DevToolsUrlActivation {
   enabledFromUrl: boolean

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DevToolsPanelPosition } from '@altafusion/fugue-devtools-persist'
+import type { DevToolsPanelPosition } from '#devtools/persist'
 
 const {
   brand = 'Dev Tools',

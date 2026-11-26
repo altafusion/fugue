@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DevToolsPanelPosition } from '#devtools/composables/devtoolsTypes'
-import { isHorizontalDevToolsDock } from '@altafusion/fugue-devtools-persist'
+import { isHorizontalDevToolsDock } from '#devtools/persist'
 
 const {
   bodyGridClass = '',
