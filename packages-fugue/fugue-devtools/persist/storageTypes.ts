@@ -1,9 +1,9 @@
 export interface StorageAPI {
   readonly namespace: string
-  resolveKey(key: string): string
-  getItem<T>(key: string): T | null
-  setItem<T>(key: string, value: T): void
-  removeItem(key: string): void
+  resolveKey: (key: string) => string
+  getItem: <T>(key: string) => T | null
+  setItem: <T>(key: string, value: T) => void
+  removeItem: (key: string) => void
 }
 
 /** The part of the Web Storage API the persist helpers use. */

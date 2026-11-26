@@ -4,7 +4,7 @@ import { createStorage } from './createStorage'
 import {
   createDefaultDevToolsChrome,
   DEVTOOLS_PERSIST_VERSION,
-  isDevToolsPersistedV1
+  isDevToolsPersistedV1,
 } from './types'
 
 export * from './types'
@@ -15,7 +15,7 @@ export function getDevToolsStorage(namespace: string): StorageAPI {
 
 export function readDevToolsPersisted<TDomain>(
   storage: StorageAPI,
-  key: string
+  key: string,
 ): DevToolsPersistedV1<TDomain> | null {
   const raw = storage.getItem<DevToolsPersistedV1<TDomain>>(key)
   if (!isDevToolsPersistedV1<TDomain>(raw))
@@ -26,7 +26,7 @@ export function readDevToolsPersisted<TDomain>(
 export function writeDevToolsPersisted<TDomain>(
   storage: StorageAPI,
   key: string,
-  value: DevToolsPersistedV1<TDomain>
+  value: DevToolsPersistedV1<TDomain>,
 ): void {
   storage.setItem(key, value)
 }
@@ -34,13 +34,13 @@ export function writeDevToolsPersisted<TDomain>(
 export function readDevToolsChrome(
   storage: StorageAPI,
   key: string,
-  isDev = false
+  isDev = false,
 ): DevToolsChromeState {
   const persisted = readDevToolsPersisted(storage, key)
   if (persisted) {
     return {
       ...createDefaultDevToolsChrome(isDev),
-      ...persisted.chrome
+      ...persisted.chrome,
     }
   }
   return createDefaultDevToolsChrome(isDev)
@@ -50,11 +50,11 @@ export function writeDevToolsChrome<TDomain>(
   storage: StorageAPI,
   key: string,
   chrome: DevToolsChromeState,
-  domain: TDomain
+  domain: TDomain,
 ): void {
   writeDevToolsPersisted(storage, key, {
     v: DEVTOOLS_PERSIST_VERSION,
     chrome,
-    domain
+    domain,
   })
 }

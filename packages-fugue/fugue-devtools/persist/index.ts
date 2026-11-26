@@ -3,7 +3,7 @@ export {
   readDevToolsChrome,
   readDevToolsPersisted,
   writeDevToolsChrome,
-  writeDevToolsPersisted
+  writeDevToolsPersisted,
 } from './storage'
 export {
   createDefaultDevToolsChrome,
@@ -11,12 +11,12 @@ export {
   DEVTOOLS_PERSIST_VERSION,
   isDevToolsPanelPosition,
   isDevToolsPersistedV1,
-  isHorizontalDevToolsDock
+  isHorizontalDevToolsDock,
 } from './types'
 
 export type {
   DevToolsChromeState,
   DevToolsPanelPosition,
   DevToolsPersistedV1,
-  DevToolsPersistVersion
+  DevToolsPersistVersion,
 } from './types'

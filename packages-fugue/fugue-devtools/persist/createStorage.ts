@@ -9,7 +9,7 @@ interface Serializer<T> {
 
 const objectSerializer: Serializer<unknown> = {
   read: raw => JSON.parse(raw),
-  write: value => JSON.stringify(value)
+  write: value => JSON.stringify(value),
 }
 
 function getDefaultStorage(): StorageLike | null {
@@ -21,7 +21,7 @@ function getDefaultStorage(): StorageLike | null {
 function readSerialized<T>(
   storage: StorageLike,
   fullKey: string,
-  serializer: Serializer<T>
+  serializer: Serializer<T>,
 ): T | null {
   try {
     const raw = storage.getItem(fullKey)
@@ -37,7 +37,7 @@ function writeSerialized<T>(
   storage: StorageLike,
   fullKey: string,
   value: T,
-  serializer: Serializer<T>
+  serializer: Serializer<T>,
 ): void {
   try {
     if (value == null)
@@ -51,7 +51,7 @@ function writeSerialized<T>(
 
 export function createStorage(
   namespace: string,
-  storage: StorageLike | null = getDefaultStorage()
+  storage: StorageLike | null = getDefaultStorage(),
 ): StorageAPI {
   const serializer = objectSerializer
 
@@ -82,6 +82,6 @@ export function createStorage(
       } catch {
         // ignore
       }
-    }
+    },
   }
 }

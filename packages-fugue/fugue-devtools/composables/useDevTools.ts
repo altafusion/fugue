@@ -1,12 +1,12 @@
 import type { Router } from 'vue-router'
 import type { DevToolsApi, DevToolsChromeState, DevToolsPersistConfig, DevToolsPublicConfig } from '#devtools/composables/devtoolsTypes'
+import { computed, inject, ref, watch } from 'vue'
+import { createDefaultDevToolsChrome, DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import {
   getDevToolsStorage,
   readDevToolsPersisted,
   writeDevToolsPersisted,
 } from '#devtools/persist'
-import { computed, inject, ref, watch } from 'vue'
-import { createDefaultDevToolsChrome, DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import { readDevToolsUrlActivation, stripDevToolsOpenParams } from '#devtools/utils/devtoolsUrlActivation'
 
 export function createDevToolsApi(options: {

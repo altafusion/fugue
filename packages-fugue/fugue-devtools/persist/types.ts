@@ -32,12 +32,12 @@ export function createDefaultDevToolsChrome(isDev = false): DevToolsChromeState 
   return {
     enabled: false,
     panelPosition: 'bottom',
-    innerToggle: isDev
+    innerToggle: isDev,
   }
 }
 
 export function isDevToolsPersistedV1<TDomain>(
-  value: unknown
+  value: unknown,
 ): value is DevToolsPersistedV1<TDomain> {
   if (value == null || typeof value !== 'object')
     return false

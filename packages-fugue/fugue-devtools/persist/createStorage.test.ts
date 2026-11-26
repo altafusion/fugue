@@ -22,7 +22,7 @@ describe('createStorage', () => {
     expect(localStorage.getItem('app::prefs')).toBe(JSON.stringify({ theme: 'dark', count: 2 }))
     expect(storage.getItem<{ theme: string, count: number }>('prefs')).toEqual({
       theme: 'dark',
-      count: 2
+      count: 2,
     })
   })
 

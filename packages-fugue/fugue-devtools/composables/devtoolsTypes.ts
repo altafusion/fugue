@@ -1,5 +1,5 @@
-import type { DevToolsChromeState, DevToolsPanelPosition } from '#devtools/persist'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
+import type { DevToolsChromeState, DevToolsPanelPosition } from '#devtools/persist'
 
 export type { DevToolsChromeState, DevToolsPanelPosition }
 export {
