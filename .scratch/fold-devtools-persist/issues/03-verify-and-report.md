@@ -81,3 +81,22 @@ Compared with `@altafusion/fugue-ui` (published 0.4.0), which has these:
   is blocked for a day.
 - **First publish check:** run `pnpm pack` in `packages-fugue/fugue-devtools` and inspect the tarball before the first release.
 
+
+## Publishing prep (2026-11-26)
+
+Done in `build(fugue-devtools): add publish metadata and join the fixed release group`:
+- `package.json`: added `license`, `homepage`, `bugs`, `repository` (with `directory`), `publishConfig.access: public` and the
+  same `files` allow-list as `fugue-ui` (no `*.test.ts`, `.nuxt`, `.output`, `.data`, `coverage`, `node_modules`).
+- `@altafusion/fugue-ui` moved from `devDependencies` to `dependencies` (the layer `extends` it).
+- Added `@altafusion/fugue-devtools` to the `fixed` group in `.changeset/config.json`.
+- `pnpm pack` checked: the tarball holds the layer, `persist/`, `utils/`, `plugins/`, `components/`, `assets/`, `LICENSE`, README;
+  no tests or build output; `workspace:*` is rewritten to `0.4.0`. `pnpm install --frozen-lockfile` passes.
+
+Deliberately NOT done (each one starts a release): `"private": true` is still set and there is no changeset. With the fixed group,
+the first release would version `fugue-devtools` together with the other fixed packages (currently 0.4.0).
+Still to do by the owner:
+1. Remove `"private": true` and add a changeset (minor) for `@altafusion/fugue-devtools`.
+2. npm side: configure trusted publishing for the new package name (`.github/workflows/release.yml`, OIDC). A brand-new npm
+   package may need its first publish or a pending trusted publisher set up in npm settings first.
+3. In each consumer, such as `camilajalfonso/camilajessica`, exclude `@altafusion/*` from `minimumReleaseAge`.
+4. Try it in a consumer with the activation param (browser checklist above).
