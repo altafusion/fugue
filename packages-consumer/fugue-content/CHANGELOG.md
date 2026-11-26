@@ -1,5 +1,19 @@
 # @altafusion/fugue-content
 
+## 0.4.0
+
+### Minor Changes
+
+- 34baa90: Remove the page-level Edit button from the `article` and `article-aside` layouts. It repeated Studio's own "Edit this page" button and, being an in-flow row, pushed the page content down for editors. The `stem` prop of `FugueContentLayoutArticle` is gone with it. The footer Edit entry now shows only to visitors without a Studio session (it is the way in to `/login`), and fragment Edit buttons are unchanged.
+
+### Patch Changes
+
+- Updated dependencies [a5133f5]
+  - @altafusion/nuxt-base@0.4.0
+  - @altafusion/fugue-simple-auth@0.4.0
+  - @altafusion/fugue-theme@0.4.0
+  - @altafusion/shell@0.4.0
+
 ## 0.3.5
 
 ### Patch Changes
