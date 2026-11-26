@@ -12,7 +12,7 @@
 import { configDefaults, defineConfig } from 'vitest/config'
 import { baseTestConfig } from '@altafusion/test-kit'
 import vue from '@vitejs/plugin-vue'
-import { alias, aliasVirtualWorkflow } from './alias'
+import { alias, aliasVirtualDevTools, aliasVirtualWorkflow } from './alias'
 
 type PackagePrefix =
   | `packages-platform/${string}`
@@ -72,6 +72,14 @@ const fugueWorkflowProject = () => {
   }
 }
 
+/** fugue-devtools composables import `#devtools/*`; isolated projects do not inherit root alias. */
+const fugueDevtoolsProject = () => ({
+  ...packageProject('fugue-devtools', 'packages-fugue/fugue-devtools', 'happy-dom'),
+  resolve: {
+    alias: aliasVirtualDevTools,
+  },
+})
+
 export default defineConfig({
   resolve: {
     alias,
@@ -96,7 +104,7 @@ export default defineConfig({
       packageProject('fugue-theme', 'packages-fugue/fugue-theme', 'node'),
       fugueWorkflowProject(),
       packageProject('shell', 'packages-product/shell', 'happy-dom'),
-      packageProject('fugue-devtools', 'packages-fugue/fugue-devtools', 'happy-dom'),
+      fugueDevtoolsProject(),
       packageProject('nuxt-base', 'packages-platform/nuxt-base', 'node'),
       packageProject('test-kit', 'packages-platform/test-kit', 'node'),
       packageProject('msw', 'packages-platform/msw', 'happy-dom'),
