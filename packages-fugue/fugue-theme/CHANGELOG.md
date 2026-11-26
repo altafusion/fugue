@@ -49,7 +49,7 @@
 
 ### Minor Changes
 
-- da3fca4: Rename the light/dark state key from `sse:theme` to `fugue:theme`, and drop the one-time localStorage migration from legacy workflow and recipe keys in `@altafusion/fugue-workflow`. Code that reads `useState('sse:theme')` directly must use the new key.
+- da3fca4: Rename the light/dark state key to `fugue:theme`, and drop the one-time localStorage migration from legacy workflow and recipe keys in `@altafusion/fugue-workflow`. Code that reads the previous key directly must use `useState('fugue:theme')`.
 
 ### Patch Changes
 
