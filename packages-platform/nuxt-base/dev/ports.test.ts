@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
-import { devPorts, devViteServerOptions, pinDevServerHmr, siteDevPort, templateDevPorts, templateViteServerOptions } from './ports'
+import { devPorts, devViteServerOptions, linkedCheckoutRoot, pinDevServerHmr, siteDevPort, templateDevPorts, templateViteServerOptions } from './ports'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const repoRoot = join(here, '../../..')
@@ -43,12 +43,32 @@ describe('devViteServerOptions', () => {
     hmr: { host: 'localhost' },
   }
 
-  it('returns expected vite server opts', () => {
-    expect(devViteServerOptions()).toEqual(expected)
+  it('returns expected vite server opts, plus the checkout in fs.allow when linked from one', () => {
+    // These tests run from the Fugue checkout itself, which is the linked case.
+    expect(devViteServerOptions()).toEqual({
+      ...expected,
+      fs: {
+        allow: [repoRoot],
+      },
+    })
   })
 
   it('templateViteServerOptions deep-equals devViteServerOptions', () => {
     expect(templateViteServerOptions()).toEqual(devViteServerOptions())
+  })
+})
+
+describe('linkedCheckoutRoot', () => {
+  it('is the Fugue checkout when the package runs from one', () => {
+    expect(linkedCheckoutRoot(here)).toBe(repoRoot)
+  })
+
+  it('is null when the package is installed under node_modules', () => {
+    expect(linkedCheckoutRoot(join(repoRoot, 'node_modules/@altafusion/nuxt-base/dev'))).toBeNull()
+  })
+
+  it('is null when the folder three levels up is not a pnpm workspace', () => {
+    expect(linkedCheckoutRoot(join(here, 'no-workspace-here/a/b'))).toBeNull()
   })
 })
 

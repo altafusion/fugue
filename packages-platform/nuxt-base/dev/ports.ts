@@ -1,5 +1,8 @@
 /** Canonical local dev HTTP ports — 70xx range so apps can run in parallel. */
+import { existsSync } from 'node:fs'
+import { dirname, join, resolve, sep } from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 // Port 7003 is reserved for the first site copied from templates/fugue-content-site (not assigned here).
 export const devPorts = {
@@ -24,16 +27,40 @@ export function devServerOptions(port: number) {
 }
 
 /**
+ * Root of the Fugue checkout this package runs from when an app links it (`pnpm link:fugue`), or `null` when the package is
+ * installed from npm. A linked checkout sits outside the app's root, so Vite refuses to serve files in its `node_modules`
+ * (for example Nuxt Content's `sqlite3.wasm`, which the browser needs to query content on a client-side navigation).
+ * Installed from npm, this package lives under the app's own `node_modules`, which Vite already allows.
+ */
+export function linkedCheckoutRoot(dir: string = dirname(fileURLToPath(import.meta.url))): string | null {
+  const root = resolve(dir, '../../..')
+  if (root.split(sep).includes('node_modules'))
+    return null
+  return existsSync(join(root, 'pnpm-workspace.yaml'))
+    ? root
+    : null
+}
+
+/**
  * Vite dev-server opts. The HTTP port stays on `devServer`.
  * Nuxt attaches the HMR websocket to that same server — do not set
  * `hmr.port` or `hmr.clientPort` to a different port.
+ * When the package is linked from a Fugue checkout, that checkout is added to `fs.allow` (see {@link linkedCheckoutRoot}).
  */
 export function devViteServerOptions() {
+  const linkedRoot = linkedCheckoutRoot()
   return {
     host: 'localhost',
     strictPort: true,
     hmr: { host: 'localhost' },
-  } as const
+    ...(linkedRoot
+      ? {
+          fs: {
+            allow: [linkedRoot],
+          },
+        }
+      : {}),
+  }
 }
 
 /**
