@@ -8,18 +8,12 @@ const props = defineProps<{
 }>()
 
 const { t } = useShellI18n()
-const { canEdit } = useFugueContentStudioEdit()
 
 const tocLinks = computed(() => fugueContentPageTocLinks(props.page.body))
 
 const tocTitle = computed(() =>
   t(FUGUE_CONTENT_ARTICLE_I18N_KEYS.onThisPage, FUGUE_CONTENT_ARTICLE_DEFAULTS.onThisPage),
 )
-
-const stem = computed(() => {
-  const value = props.page.stem
-  return typeof value === 'string' ? value : ''
-})
 </script>
 
 <template>
@@ -41,15 +35,6 @@ const stem = computed(() => {
         </details>
 
         <article class="prose prose-neutral dark:prose-invert mx-auto w-full max-w-3xl">
-          <div
-            v-if="canEdit && stem"
-            class="mb-4 flex justify-end"
-          >
-            <FugueContentEditContent
-              :page-stem="stem"
-              :require-session="false"
-            />
-          </div>
           <slot />
         </article>
       </UPageBody>

@@ -241,7 +241,7 @@ nav:
 ---
 ```
 
-Long-form pages: **`layout: article`** (prose + per-page **Edit**) or **`layout: article-aside`** (+ **On This Page** TOC from markdown headings). See developer-docs **[Article Layouts](/fugue-content/starter-template/article-layouts)**.
+Long-form pages: **`layout: article`** (prose) or **`layout: article-aside`** (+ **On This Page** TOC from markdown headings). See developer-docs **[Article Layouts](/fugue-content/starter-template/article-layouts)**.
 
 ## MDC blocks
 

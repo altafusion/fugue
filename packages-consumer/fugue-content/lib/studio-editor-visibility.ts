@@ -32,9 +32,12 @@ export function resolveFugueContentShowEditorMenu(ctx: FugueContentEditorChromeC
   return ctx.hasStudioSession
 }
 
-/** Footer Edit entry — visible when Studio is configured; hidden while the editor is open. */
+/**
+ * Footer Edit entry — the way in for visitors who have not signed in yet. Visible when Studio is configured; hidden while the
+ * editor is open and once there is a Studio session, because signed-in editors get the page-level Edit Page button at the top.
+ */
 export function resolveFugueContentShowFooterEdit(ctx: FugueContentEditorChromeContext): boolean {
-  if (!ctx.isClientReady || !ctx.hasStudioRoute || ctx.isStudioActive)
+  if (!ctx.isClientReady || !ctx.hasStudioRoute || ctx.isStudioActive || ctx.hasStudioSession)
     return false
 
   return true

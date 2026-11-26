@@ -60,6 +60,10 @@ describe('resolveFugueContentShowFooterEdit', () => {
     expect(resolveFugueContentShowFooterEdit(base({ hasStudioSession: false }))).toBe(true)
   })
 
+  it('hides once signed in, because the page-level Edit Page button takes over', () => {
+    expect(resolveFugueContentShowFooterEdit(base({ hasStudioSession: true }))).toBe(false)
+  })
+
   it('hides when studio route is missing', () => {
     expect(resolveFugueContentShowFooterEdit(base({ hasStudioRoute: false }))).toBe(false)
   })

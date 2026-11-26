@@ -21,10 +21,7 @@ const { contentPage, error, loading } = useFugueContentCatchAllRoute()
   >
     <ContentRenderer :value="contentPage" />
   </FugueContentLayoutArticleAside>
-  <FugueContentLayoutArticle
-    v-else-if="contentPage.layout === 'article'"
-    :stem="typeof contentPage.stem === 'string' ? contentPage.stem : undefined"
-  >
+  <FugueContentLayoutArticle v-else-if="contentPage.layout === 'article'">
     <ContentRenderer :value="contentPage" />
   </FugueContentLayoutArticle>
   <FugueContentLayoutLanding v-else>
