@@ -1,6 +1,6 @@
 # 02: Fold persist and storage into @altafusion/fugue-devtools
 
-Status: ready-for-agent
+Status: resolved
 Type: task
 Blocked by: 01
 
@@ -21,4 +21,18 @@ Do not publish and do not change `"private": true`.
 
 ## Answer
 
-(append here, then set `Status: resolved`)
+Done 2026-11-26, local commits only (not pushed): `3bbe617`, `b8c64a8`, `ba0f64c`.
+
+- **Persist moved** into `packages-fugue/fugue-devtools/persist/` (`index.ts`, `types.ts`, `storage.ts`). Same exports, same
+  persisted shape `{ v, chrome, domain }`, and the `"./persist"` subpath is unchanged. The composables and components now import
+  `#devtools/persist`.
+- **Storage code copied** into `persist/` (`createStorage.ts`, `storageTypes.ts`, `createStorage.test.ts`, 5 tests passing).
+  `createStorage` used `StorageSerializers.object` from `@vueuse/core`, which is `JSON.parse` / `JSON.stringify`; it is inlined, so
+  persist now imports nothing from Vue, Nuxt or `@vueuse/core` and `@vueuse/core` was **not** added to `fugue-devtools`.
+- **Deleted** `packages-fugue/fugue-devtools-persist/`; removed its dependency from `fugue-devtools/package.json`; updated the
+  lockfile, `README.md`, `packages-fugue/README.md` and the `fugue-devtools` README. `alias.ts`, `vitest.config.ts`,
+  `tsconfig.packages.json` and the eslint config never referenced persist, so they needed no change.
+- **`fugue-storage` kept.** Nothing in the repo imports it any more. Needs the owner's decision: delete it (its alias, vitest
+  project, tsconfig path, eslint pattern and README entries go with it) or keep it.
+- **Checks:** `pnpm -r lint`, `pnpm -r typecheck` and `vitest run` (59 files, 613 tests) pass. Not verified: UI behaviour (ticket 03).
+
