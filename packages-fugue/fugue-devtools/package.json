@@ -19,9 +19,6 @@
     "vue": "^3.5.0",
     "vue-router": "^5.0.0"
   },
-  "dependencies": {
-    "@altafusion/fugue-devtools-persist": "workspace:*"
-  },
   "devDependencies": {
     "@altafusion/eslint-config": "workspace:*",
     "@altafusion/fugue-ui": "workspace:*",

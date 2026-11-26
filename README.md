@@ -15,7 +15,6 @@ fugue/
 │   └── test-kit/              # @altafusion/test-kit
 ├── packages-fugue/
 │   ├── fugue-devtools/        # @altafusion/fugue-devtools
-│   ├── fugue-devtools-persist/ # @altafusion/fugue-devtools-persist
 │   ├── fugue-nuxt-ui/         # @altafusion/fugue-nuxt-ui
 │   ├── fugue-simple-auth/     # @altafusion/fugue-simple-auth
 │   ├── fugue-storage/         # @altafusion/fugue-storage

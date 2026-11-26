@@ -9,7 +9,6 @@ Cross-app reusable packages — generic UI, utilities, and tooling that **consum
 | **`fugue-ui/`** | `@altafusion/fugue-ui` — generic Vue primitives (`CopyToClipboard`, `TileSelector`, …) |
 | **`fugue-workflow/`** | `@altafusion/fugue-workflow` — workflow orchestrator layer (+ `playground/`) |
 | **`fugue-devtools/`** | `@altafusion/fugue-devtools` — non-modal dev tools drawer |
-| **`fugue-devtools-persist/`** | `@altafusion/fugue-devtools-persist` — persist helpers (uses `@altafusion/fugue-storage`) |
 | **`fugue-simple-auth/`** | `@altafusion/fugue-simple-auth` — access-key gate (Altafusion-only) |
 | **`fugue-storage/`** | `@altafusion/fugue-storage` — namespaced localStorage (VueUse-backed) |
 

@@ -1,6 +1,6 @@
 # @altafusion/fugue-devtools
 
-Nuxt layer for a **generic non-modal dev tools drawer** — part of the **Fugue** family (`@altafusion/fugue-ui`, `@altafusion/fugue-storage`, …). Project adapters supply domain sections, visibility rules, and persisted flag state.
+Nuxt layer for a **generic non-modal dev tools drawer** — part of the **Fugue** family (`@altafusion/fugue-ui`, …). Project adapters supply domain sections, visibility rules, and persisted flag state.
 
 ## Stack
 
@@ -40,4 +40,4 @@ Shell components live under **`components/DevTools/`** (folder namespace → **`
 > **Local — do not copy-sync.** Repo wiring, ports, catalog keys, consuming apps, and docs-site links.
 
 - Altafusion product adapters register domain sections at the app layer; tune **`openParams`** / **`registerPlugin`** per app.
-- Persist helpers: **`@altafusion/fugue-devtools-persist`** + **`@altafusion/fugue-storage`**.
+- Persist helpers live in this package under **`persist/`** (subpath **`@altafusion/fugue-devtools/persist`**, imported inside the layer as **`#devtools/persist`**). They do not import Vue or Nuxt.
