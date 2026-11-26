@@ -32,7 +32,7 @@ Done 2026-11-26, local commits only (not pushed): `3bbe617`, `b8c64a8`, `ba0f64c
 - **Deleted** `packages-fugue/fugue-devtools-persist/`; removed its dependency from `fugue-devtools/package.json`; updated the
   lockfile, `README.md`, `packages-fugue/README.md` and the `fugue-devtools` README. `alias.ts`, `vitest.config.ts`,
   `tsconfig.packages.json` and the eslint config never referenced persist, so they needed no change.
-- **`fugue-storage` kept.** Nothing in the repo imports it any more. Needs the owner's decision: delete it (its alias, vitest
-  project, tsconfig path, eslint pattern and README entries go with it) or keep it.
+- **`fugue-storage` kept.** Nothing in the repo imports it any more. Owner decision 2026-11-26: keep it for now; revisit later (deleting
+  it would also remove its alias, vitest project, tsconfig path, eslint pattern and README entries).
 - **Checks:** `pnpm -r lint`, `pnpm -r typecheck` and `vitest run` (59 files, 613 tests) pass. Not verified: UI behaviour (ticket 03).
 
