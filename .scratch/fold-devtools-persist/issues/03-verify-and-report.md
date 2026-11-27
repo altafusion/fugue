@@ -107,3 +107,26 @@ The owner ran the checklist in the theme playground with the layer extended by p
 (`DevToolsPanel`, `DevToolsNav`, toggle button): it all works. That covered opening with `?devtools`, docking, state persisting
 across a reload and closing. The temporary wiring was removed afterwards and never committed.
 Not covered by that run: a real consumer installing the published package (Camila), and a `?qetools` site setting.
+
+## Release plan (2026-11-27)
+
+How the earlier packages were created: by hand first, as a placeholder. `@altafusion/fugue-devtools` was published the same way
+as `0.0.0-stage` (public, no dependencies, no license). That placeholder does not collide with the release PR's `0.5.0`, so no hand
+publish of `0.1.0` is needed.
+
+1. On the package's npm Settings page, under Trusted Publisher, choose GitHub Actions and set: owner `altafusion`, repository
+   `fugue`, workflow filename `release.yml`, environment empty (the workflow uses none). Save.
+2. Optional: set Publishing access to "Require two-factor authentication and disallow bypass tokens". It is compatible with OIDC
+   trusted publishing and is npm's recommended setting.
+3. Release PR #17 (`chore(release): version packages`): CI is green. Approve it, or merge with the admin bypass (branch protection
+   asks for one review). The `Release` workflow then publishes all ten fixed packages at `0.5.0` with provenance, pushes the tags
+   and creates the GitHub releases. `latest` moves from `0.0.0-stage` to `0.5.0`.
+4. Check the run in the Actions tab, and that `@altafusion/fugue-devtools@0.5.0` shows provenance on npm.
+5. Install the published package in a clean directory (not inside the repo) to confirm the tarball resolves: `@altafusion/fugue-devtools`
+   pulls `@altafusion/fugue-ui@0.5.0`.
+6. In Camila, install it, add `@altafusion/*` to `minimumReleaseAgeExclude`, and run the browser checklist with the site's
+   `openParams` (for example `?qetools`).
+
+If step 3 fails on `fugue-devtools` (for example the trusted publisher was not saved), fix the setting and re-run the workflow
+from the Actions tab (`workflow_dispatch`); the other packages are already published, and the workflow only publishes versions
+that are missing from npm.
