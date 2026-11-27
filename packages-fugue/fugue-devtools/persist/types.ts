@@ -18,6 +18,8 @@ export function isDevToolsPanelPosition(value: unknown): value is DevToolsPanelP
 /** Drawer chrome — shared across Fugue devtools adapters. */
 export interface DevToolsChromeState {
   enabled: boolean
+  /** Whether the drawer is showing. Closing keeps `enabled`, so the dock stays. */
+  open: boolean
   panelPosition: DevToolsPanelPosition
   innerToggle: boolean
 }
@@ -31,6 +33,7 @@ export interface DevToolsPersistedV1<TDomain = Record<string, unknown>> {
 export function createDefaultDevToolsChrome(isDev = false): DevToolsChromeState {
   return {
     enabled: false,
+    open: false,
     panelPosition: 'bottom',
     innerToggle: isDev,
   }

@@ -1,5 +1,6 @@
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
 import type { DevToolsChromeState, DevToolsPanelPosition } from '#devtools/persist'
+import type { DevToolsRegistry } from './devtoolsRegistry'
 
 export type { DevToolsChromeState, DevToolsPanelPosition }
 export {
@@ -10,6 +11,8 @@ export {
 
 export interface DevToolsUrlActivation {
   enabledFromUrl: boolean
+  /** An open param carries the value `off`: turn the devtools off. */
+  disabledFromUrl: boolean
   hasInnerToggleParam: boolean
 }
 
@@ -23,7 +26,7 @@ export interface DevToolsPersistConfig {
   key: string
 }
 
-export interface DevToolsApi {
+export interface DevToolsApi extends DevToolsRegistry {
   chrome: Ref<DevToolsChromeState>
   showPanel: ComputedRef<boolean>
   updateChrome: <K extends keyof DevToolsChromeState>(_key: K, _value: DevToolsChromeState[K]) => void

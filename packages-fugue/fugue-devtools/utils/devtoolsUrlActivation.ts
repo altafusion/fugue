@@ -9,9 +9,13 @@ export function parseDevToolsUrlActivation(
   )
   const openParams = config.openParams.map(p => p.toLowerCase())
   const innerParams = config.innerToggleParams.map(p => p.toLowerCase())
+  const disabledFromUrl = Array.from(searchParams.entries()).some(
+    ([key, value]) => openParams.includes(key.toLowerCase()) && value.toLowerCase() === 'off',
+  )
   return {
-    enabledFromUrl: openParams.some(p => queryKeys.has(p))
-      || innerParams.some(p => queryKeys.has(p)),
+    enabledFromUrl: !disabledFromUrl && (openParams.some(p => queryKeys.has(p))
+      || innerParams.some(p => queryKeys.has(p))),
+    disabledFromUrl,
     hasInnerToggleParam: innerParams.some(p => queryKeys.has(p)),
   }
 }
@@ -37,12 +41,12 @@ export function readDevToolsUrlActivation(
   config: Pick<DevToolsPublicConfig, 'openParams' | 'innerToggleParams'>,
 ): DevToolsUrlActivation {
   const fromRoute = parseDevToolsUrlActivation(queryRecordToSearchParams(query), config)
-  if (fromRoute.enabledFromUrl)
+  if (fromRoute.enabledFromUrl || fromRoute.disabledFromUrl)
     return fromRoute
 
   if (typeof window !== 'undefined') {
     const fromWindow = parseDevToolsUrlActivation(new URLSearchParams(window.location.search), config)
-    if (fromWindow.enabledFromUrl)
+    if (fromWindow.enabledFromUrl || fromWindow.disabledFromUrl)
       return fromWindow
   }
 

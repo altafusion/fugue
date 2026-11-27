@@ -11,7 +11,7 @@ const config = {
 
 describe('readDevToolsUrlActivation', () => {
   it('is off when no param is present', () => {
-    expect(readDevToolsUrlActivation({}, config)).toEqual({ enabledFromUrl: false, hasInnerToggleParam: false })
+    expect(readDevToolsUrlActivation({}, config)).toEqual({ enabledFromUrl: false, disabledFromUrl: false, hasInnerToggleParam: false })
   })
 
   it('opens on the default ?devtools param, with or without a value', () => {
@@ -38,6 +38,7 @@ describe('readDevToolsUrlActivation', () => {
   it('treats the inner toggle param as both an open and an inner-toggle signal', () => {
     expect(readDevToolsUrlActivation({ devtoolstoggle: '' }, config)).toEqual({
       enabledFromUrl: true,
+      disabledFromUrl: false,
       hasInnerToggleParam: true,
     })
   })
