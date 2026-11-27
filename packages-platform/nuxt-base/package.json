@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/nuxt-base",
   "type": "module",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Base Nuxt layer and configuration for Altafusion packages",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-platform/nuxt-base#readme",
