@@ -25,6 +25,7 @@
     "test:e2e:debug": "playwright test --debug --project chromium",
     "test:e2e:report": "playwright show-report",
     "test:e2e:fugue-content-site": "PLAYWRIGHT_BASE_URL=http://localhost:8001/ playwright test e2e/fugue-content-site --project chromium",
+    "play:devtools": "pnpm --filter @altafusion/fugue-devtools-playground dev",
     "play:theme": "pnpm --filter @altafusion/fugue-theme-playground dev",
     "play:ui": "pnpm --filter @altafusion/fugue-ui-playground dev",
     "dev:fugue-content-site": "pnpm --filter @altafusion/fugue-content-site-template dev",

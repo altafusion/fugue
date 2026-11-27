@@ -15,6 +15,7 @@ const emit = defineEmits<{
   positionChange: [pos: DevToolsPanelPosition]
   settingsToggle: []
   close: []
+  turnOff: []
 }>()
 
 const dockOptions: { pos: DevToolsPanelPosition, icon: string, label: string }[] = [
@@ -55,6 +56,16 @@ const dockOptions: { pos: DevToolsPanelPosition, icon: string, label: string }[]
         :aria-label="`Position panel ${pos}`"
         :title="label"
         @click="emit('positionChange', pos)"
+      />
+      <UButton
+        icon="i-lucide-power"
+        color="neutral"
+        variant="ghost"
+        size="xs"
+        data-testid="devtools-panel-turn-off"
+        aria-label="Turn off dev tools"
+        title="Turn off (add the activation param to the URL to bring it back)"
+        @click="emit('turnOff')"
       />
       <UButton
         icon="i-lucide-x"

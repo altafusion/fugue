@@ -32,7 +32,9 @@ export function createDevToolsRegistry(options: { isDev: boolean }): DevToolsReg
   const activeId = ref<string | undefined>()
 
   const sections = computed(() =>
-    [...map.value.values()].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
+    [
+      ...map.value.values(),
+    ].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
   )
 
   const canAccessPrivileged = computed(() => resolver.value() === true)
@@ -60,5 +62,12 @@ export function createDevToolsRegistry(options: { isDev: boolean }): DevToolsReg
     resolver.value = next
   }
 
-  return { sections, visibleSections, activeId, activeSection, registerSection, setAccessResolver }
+  return {
+    sections,
+    visibleSections,
+    activeId,
+    activeSection,
+    registerSection,
+    setAccessResolver,
+  }
 }

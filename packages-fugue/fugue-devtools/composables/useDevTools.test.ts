@@ -140,7 +140,11 @@ describe('createDevToolsApi', () => {
     const { api, router } = setup({ devtools: 'off', page: '2' })
     expect(api.showPanel.value).toBe(false)
     expect(api.chrome.value.enabled).toBe(false)
-    expect(router.replace).toHaveBeenCalledWith({ path: '/page', query: { page: '2' }, hash: '' })
+    expect(router.replace).toHaveBeenCalledWith({
+      path: '/page',
+      query: { page: '2' },
+      hash: '',
+    })
   })
 
   it('disable() resets the persisted chrome', async () => {
@@ -159,13 +163,25 @@ describe('createDevToolsApi', () => {
   it('turn off, then re-enable by URL, with a router that really updates the URL', async () => {
     const router = createRouter({
       history: createMemoryHistory(),
-      routes: [{ path: '/:pathMatch(.*)*', component: { render: () => null } }],
+      routes: [
+        {
+          path: '/:pathMatch(.*)*',
+          component: {
+            render: () => null,
+          },
+        },
+      ],
     })
     await router.push('/page?devtools')
     vi.stubGlobal('useRoute', () => new Proxy({}, {
       get: (_, key) => (router.currentRoute.value as unknown as Record<string | symbol, unknown>)[key],
     }))
-    const api = createDevToolsApi({ router, isDev: false, urlConfig, persist })
+    const api = createDevToolsApi({
+      router,
+      isDev: false,
+      urlConfig,
+      persist,
+    })
     expect(api.showPanel.value).toBe(true)
 
     api.disable()
@@ -181,7 +197,13 @@ describe('createDevToolsApi', () => {
 
   it('exposes the section registry on the api', () => {
     const { api } = setup({}, { isDev: true })
-    api.registerSection({ id: 'a', label: 'A', component: { render: () => null } })
+    api.registerSection({
+      id: 'a',
+      label: 'A',
+      component: {
+        render: () => null,
+      },
+    })
     expect(api.visibleSections.value.map(s => s.id)).toEqual(['a'])
   })
 })

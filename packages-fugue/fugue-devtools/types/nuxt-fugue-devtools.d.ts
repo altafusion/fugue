@@ -8,7 +8,14 @@ declare module 'nuxt/schema' {
       innerToggleParams: string[]
       persistNamespace?: string
       persistKey?: string
+      defaultPosition?: 'top' | 'right' | 'bottom' | 'left'
     }
+  }
+}
+
+declare module '#app' {
+  interface NuxtApp {
+    $fugueDevtools?: import('#devtools/composables/devtoolsTypes').DevToolsApi
   }
 }
 

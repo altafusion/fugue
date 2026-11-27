@@ -1,8 +1,8 @@
 import type { Router } from 'vue-router'
 import type { DevToolsApi, DevToolsChromeState, DevToolsPersistConfig, DevToolsPublicConfig } from '#devtools/composables/devtoolsTypes'
 import { computed, inject, ref, watch } from 'vue'
-import { createDefaultDevToolsChrome, DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import { createDevToolsRegistry } from '#devtools/composables/devtoolsRegistry'
+import { createDefaultDevToolsChrome, DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import {
   getDevToolsStorage,
   readDevToolsPersisted,
@@ -14,6 +14,7 @@ export function createDevToolsApi(options: {
   router: Router
   isDev: boolean
   urlConfig: DevToolsPublicConfig
+  /** Site defaults; a value the user saved takes precedence. */
   initialChrome?: Partial<DevToolsChromeState>
   persist?: DevToolsPersistConfig
 }): DevToolsApi {
@@ -31,10 +32,11 @@ export function createDevToolsApi(options: {
 
   const chrome = ref<DevToolsChromeState>({
     ...createDefaultDevToolsChrome(isDev),
+    // Site defaults sit under what the user saved, so a remembered dock position wins.
+    ...options.initialChrome,
     ...(persist && storage
       ? readDevToolsPersisted(storage, persist.key)?.chrome
       : undefined),
-    ...options.initialChrome,
   })
 
   const showPanel = computed(
@@ -83,7 +85,10 @@ export function createDevToolsApi(options: {
 
   /** Back to the defaults (off, closed, default dock), which is also what gets persisted. */
   function turnOff() {
-    chrome.value = createDefaultDevToolsChrome(isDev)
+    chrome.value = {
+      ...createDefaultDevToolsChrome(isDev),
+      ...options.initialChrome,
+    }
     const { enabledFromUrl, disabledFromUrl } = urlActivation.value
     if (!enabledFromUrl && !disabledFromUrl)
       return

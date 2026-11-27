@@ -2,13 +2,25 @@ import { describe, expect, it } from 'vitest'
 import { nextTick, ref } from 'vue'
 import { createDevToolsRegistry } from './devtoolsRegistry'
 
-const Stub = { render: () => null }
+const Stub = {
+  render: () => null,
+}
 
 describe('createDevToolsRegistry', () => {
   it('registers sections as privileged by default and orders them', () => {
     const registry = createDevToolsRegistry({ isDev: true })
-    registry.registerSection({ id: 'b', label: 'B', component: Stub, order: 2 })
-    registry.registerSection({ id: 'a', label: 'A', component: Stub, order: 1 })
+    registry.registerSection({
+      id: 'b',
+      label: 'B',
+      component: Stub,
+      order: 2,
+    })
+    registry.registerSection({
+      id: 'a',
+      label: 'A',
+      component: Stub,
+      order: 1,
+    })
     expect(registry.sections.value.map(s => [s.id, s.access])).toEqual([
       ['a', 'privileged'],
       ['b', 'privileged'],
@@ -32,7 +44,12 @@ describe('createDevToolsRegistry', () => {
 
   it('hides privileged sections outside dev when no resolver is set', () => {
     const registry = createDevToolsRegistry({ isDev: false })
-    registry.registerSection({ id: 'pub', label: 'P', component: Stub, access: 'public' })
+    registry.registerSection({
+      id: 'pub',
+      label: 'P',
+      component: Stub,
+      access: 'public',
+    })
     registry.registerSection({ id: 'priv', label: 'X', component: Stub })
     expect(registry.visibleSections.value.map(s => s.id)).toEqual(['pub'])
   })
@@ -61,8 +78,19 @@ describe('createDevToolsRegistry', () => {
     const registry = createDevToolsRegistry({ isDev: false })
     const allowed = ref(true)
     registry.setAccessResolver(() => allowed.value)
-    registry.registerSection({ id: 'pub', label: 'P', component: Stub, access: 'public', order: 2 })
-    registry.registerSection({ id: 'priv', label: 'X', component: Stub, order: 1 })
+    registry.registerSection({
+      id: 'pub',
+      label: 'P',
+      component: Stub,
+      access: 'public',
+      order: 2,
+    })
+    registry.registerSection({
+      id: 'priv',
+      label: 'X',
+      component: Stub,
+      order: 1,
+    })
     registry.activeId.value = 'priv'
     expect(registry.activeSection.value?.id).toBe('priv')
     allowed.value = false

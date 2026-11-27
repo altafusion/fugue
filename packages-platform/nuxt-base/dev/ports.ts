@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 // Port 7003 is reserved for the first site copied from templates/fugue-content-site (not assigned here).
 export const devPorts = {
   developerDocs: 7005,
+  devtoolsPlayground: 7012,
   pickup: 7006,
   themePlayground: 7010,
   uiPlayground: 7011,
