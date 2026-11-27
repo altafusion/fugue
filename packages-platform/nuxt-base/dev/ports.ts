@@ -9,6 +9,7 @@ export const devPorts = {
   developerDocs: 7005,
   pickup: 7006,
   themePlayground: 7010,
+  uiPlayground: 7011,
 } as const
 
 /** Workspace starter templates — 80xx range, separate from {@link devPorts} apps. */

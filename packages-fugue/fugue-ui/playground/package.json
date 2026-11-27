@@ -1,0 +1,26 @@
+{
+  "name": "@altafusion/fugue-ui-playground",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone Nuxt app that extends only @altafusion/fugue-ui so its components can be tried in a browser",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@altafusion/fugue-ui": "workspace:*",
+    "@altafusion/nuxt-base": "workspace:*",
+    "nuxt": "catalog:apps",
+    "vue": "catalog:apps"
+  },
+  "devDependencies": {
+    "@altafusion/eslint-config": "workspace:*",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:dev",
+    "typescript": "catalog:dev"
+  }
+}

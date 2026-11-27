@@ -30,6 +30,17 @@ fugue/
     └── docus-site/            # @altafusion/docus-site-template
 ```
 
+## Playgrounds
+
+Private Nuxt apps for trying a package in a browser. They are never published, and each extends only the layers it exercises.
+
+| Command | Package | Port | What it shows |
+|---|---|---|---|
+| `pnpm play:ui` | `packages-fugue/fugue-ui/playground` | 7011 | fugue-ui components on Nuxt UI alone, with no theme or shell: one page per component, such as the `FloatingDock` |
+| `pnpm play:theme` | `packages-fugue/fugue-theme/playground` | 7010 | fugue-theme tokens and text roles with the shell chrome, in light and dark |
+
+Both scripts run the playground's `dev` script through `pnpm --filter`. Ports come from `packages-platform/nuxt-base/dev/ports.ts`. A new component in fugue-ui gets a page in its playground; theming work belongs in the theme playground.
+
 **Layer chain:** `nuxt-base` → `fugue-nuxt-ui` → `fugue-theme` / `fugue-ui` → `shell` → product apps from **`templates/fugue-content-site`**.
 
 

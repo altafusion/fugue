@@ -23,6 +23,7 @@
   },
   "main": "./nuxt.config.ts",
   "scripts": {
+    "dev": "pnpm --filter @altafusion/fugue-ui-playground dev",
     "clean": "rm -rf .output .nuxt node_modules/.cache dist",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -52,6 +53,7 @@
     "!**/.nuxt",
     "!**/.output",
     "!**/.data",
+    "!playground",
     "!**/coverage",
     "!**/node_modules"
   ]
