@@ -12,6 +12,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@altafusion/fugue-devtools": "workspace:*",
     "@altafusion/fugue-theme": "workspace:*",
     "@altafusion/nuxt-base": "workspace:*",
     "@altafusion/shell": "workspace:*",

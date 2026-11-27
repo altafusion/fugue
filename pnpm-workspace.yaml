@@ -3,7 +3,6 @@ packages:
   - 'packages-product/*'
   - 'packages-fugue/*'
   - 'packages-fugue/fugue-workflow/playground'
-  - 'packages-fugue/fugue-devtools/playground'
   - 'packages-fugue/fugue-theme/playground'
   - 'packages-fugue/fugue-ui/playground'
   - 'packages-consumer/*'

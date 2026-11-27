@@ -66,7 +66,7 @@ Not a Nuxt DevTools tab (out of scope for now). The registry does not depend on 
 
 Composables: **`useDevTools()`** (chrome: enabled, open, dock position; the section registry).
 
-Try it with `pnpm play:devtools` (port 7012), then open `http://localhost:7012/?qetools`.
+Try it in the theme playground: `pnpm play:theme`, then open `http://localhost:7010/?qetools`.
 
 ## Component naming
 
