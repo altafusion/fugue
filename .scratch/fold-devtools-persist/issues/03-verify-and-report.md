@@ -1,6 +1,6 @@
 # 03: Verify and report
 
-Status: resolved (browser checklist pending the owner)
+Status: resolved
 Type: task
 Blocked by: 02
 
@@ -100,3 +100,10 @@ Still to do by the owner:
    package may need its first publish or a pending trusted publisher set up in npm settings first.
 3. In each consumer, such as `camilajalfonso/camilajessica`, exclude `@altafusion/*` from `minimumReleaseAge`.
 4. Try it in a consumer with the activation param (browser checklist above).
+
+## Browser check (2026-11-27)
+
+The owner ran the checklist in the theme playground with the layer extended by path and a small test panel
+(`DevToolsPanel`, `DevToolsNav`, toggle button): it all works. That covered opening with `?devtools`, docking, state persisting
+across a reload and closing. The temporary wiring was removed afterwards and never committed.
+Not covered by that run: a real consumer installing the published package (Camila), and a `?qetools` site setting.
