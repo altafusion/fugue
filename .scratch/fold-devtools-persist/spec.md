@@ -1,6 +1,6 @@
 # Fold the devtools persist and storage code into @altafusion/fugue-devtools
 
-Status: ready-for-agent
+Status: resolved (published as 0.5.0 on 2026-11-27)
 
 ## Problem
 

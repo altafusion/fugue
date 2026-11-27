@@ -130,3 +130,9 @@ publish of `0.1.0` is needed.
 If step 3 fails on `fugue-devtools` (for example the trusted publisher was not saved), fix the setting and re-run the workflow
 from the Actions tab (`workflow_dispatch`); the other packages are already published, and the workflow only publishes versions
 that are missing from npm.
+
+## Published and installed (2026-11-27)
+
+Release PR #17 merged; `@altafusion/fugue-devtools@0.5.0` and the nine other fixed packages are on npm with provenance. A clean
+install resolves. The owner installed it in the Camila site (namespace `camila`, `?qetools`, toggle shown in development only) and
+reports that it works. This work is complete.
