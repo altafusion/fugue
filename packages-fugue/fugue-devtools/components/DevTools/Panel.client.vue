@@ -47,7 +47,7 @@ function toggle() {
 const drawerSurfaceClass
   = 'devtools-panel__surface--drawer !bg-muted ring-default shadow-lg drop-shadow-xl'
 
-// `bottom-12` leaves room for the dock bar under a bottom-docked drawer, so the two never overlap.
+// `bottom-12` leaves room for the dock bar under a bottom-docked drawer, so the two never overlap. The drawer is inset 1rem from the sides, and the dock's margin (16) lines the bar's right end up with it.
 const drawerUi = computed(() => {
   const surface = drawerSurfaceClass
   const body = 'devtools-panel overflow-y-auto px-3 py-2'
@@ -78,7 +78,9 @@ const drawerUi = computed(() => {
         storage-key="fugue-devtools:dock"
         label="Dev tools"
         bottom-class="bottom-2"
-        :default-percent="85"
+        :default-percent="100"
+        align="end"
+        :margin="16"
       />
     </slot>
 
