@@ -4,6 +4,7 @@ packages:
   - 'packages-fugue/*'
   - 'packages-fugue/fugue-workflow/playground'
   - 'packages-fugue/fugue-theme/playground'
+  - 'packages-fugue/fugue-ui/playground'
   - 'packages-consumer/*'
   - 'templates/docus-site'
   - 'templates/fugue-content-site'

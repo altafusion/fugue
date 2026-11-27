@@ -7,7 +7,7 @@ Private Nuxt app on port 7010. Extends `@altafusion/fugue-theme` and `@altafusio
 From the repo root:
 
 ```bash
-pnpm --filter @altafusion/fugue-theme dev
+pnpm play:theme
 ```
 
 Open http://localhost:7010. The shell header toggles color mode.
