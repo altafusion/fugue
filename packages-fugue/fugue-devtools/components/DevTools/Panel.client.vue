@@ -3,7 +3,7 @@ import type { DevToolsPanelPosition } from '#devtools/composables/devtoolsTypes'
 import { isHorizontalDevToolsDock } from '#devtools/persist'
 
 /**
- * The whole dev tools UI. Mount `<DevToolsPanel />` once (app.vue) and it works alone: it reads `useDevTools()`, shows a
+ * The whole dev tools UI. The `.client.vue` suffix keeps it off the server: the API it reads is provided by a client-only plugin. Mount `<DevToolsPanel />` once (app.vue) and it works alone: it reads `useDevTools()`, shows a
  * draggable dock while the tools are enabled, and opens a non-modal drawer with the registered sections.
  *
  * Sections come from `registerSection()` (the way a layer or plugin adds one). Slots are the second path:
