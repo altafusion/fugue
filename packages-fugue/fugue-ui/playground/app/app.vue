@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const links = [
   { label: 'Floating Dock', to: '/floating-dock' },
+  { label: 'Dev Tools', to: '/devtools' },
 ]
 </script>
 
@@ -28,5 +29,6 @@ const links = [
       </nav>
     </header>
     <NuxtPage />
+    <DevToolsPanel />
   </UApp>
 </template>

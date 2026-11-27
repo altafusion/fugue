@@ -22,6 +22,12 @@ const groups: { title: string, components: ComponentEntry[] }[] = [
       { name: 'TileSelectorMultiple', description: 'A multi-select tile picker built on the checkbox group.' },
     ],
   },
+  {
+    title: '@altafusion/fugue-devtools',
+    components: [
+      { name: 'DevToolsPanel', description: 'A draggable dock and a drawer of debugging sections. Mount it once; ?qetools turns it on.', to: '/devtools' },
+    ],
+  },
 ]
 
 useSeoMeta({ title: 'Fugue UI Playground' })

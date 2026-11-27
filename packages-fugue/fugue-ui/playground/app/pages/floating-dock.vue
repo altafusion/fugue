@@ -2,7 +2,7 @@
 const open = ref(true)
 const notify = ref(true)
 
-useSeoMeta({ title: 'Floating Dock · Fugue Theme Playground' })
+useSeoMeta({ title: 'Floating Dock · Fugue UI Playground' })
 </script>
 
 <template>

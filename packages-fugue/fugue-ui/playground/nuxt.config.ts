@@ -1,11 +1,11 @@
 import { devPorts, devServerOptions, devViteServerOptions } from '@altafusion/nuxt-base/dev/ports'
 
 /**
- * Specimen app for fugue-ui components. Extends only fugue-ui (no theme, no shell), so a component here proves it needs
- * nothing beyond Nuxt UI and VueUse.
+ * Specimen app for the Fugue components. Extends fugue-ui (no theme, no shell) and fugue-devtools, which sits on top of
+ * fugue-ui. fugue-ui itself still depends on nothing beyond Nuxt UI and VueUse (see its package.json).
  */
 export default defineNuxtConfig({
-  extends: ['@altafusion/fugue-ui'],
+  extends: ['@altafusion/fugue-ui', '@altafusion/fugue-devtools'],
 
   devServer: devServerOptions(devPorts.uiPlayground),
 

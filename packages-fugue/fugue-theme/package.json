@@ -55,6 +55,7 @@
   },
   "files": [
     "**",
+    "!playground",
     "!**/*.test.ts",
     "!**/.nuxt",
     "!**/.output",
