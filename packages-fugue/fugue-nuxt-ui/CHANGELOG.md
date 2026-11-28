@@ -1,5 +1,12 @@
 # @altafusion/fugue-nuxt-ui
 
+## 0.6.2
+
+### Patch Changes
+
+- @altafusion/eslint-config@0.6.2
+  - @altafusion/nuxt-base@0.6.2
+
 ## 0.6.1
 
 ### Patch Changes

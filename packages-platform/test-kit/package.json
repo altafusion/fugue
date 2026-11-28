@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/test-kit",
   "type": "module",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Test kit for Altafusion packages — Vitest, Nuxt test utils, MSW",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-platform/test-kit#readme",
