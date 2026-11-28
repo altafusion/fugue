@@ -1,5 +1,6 @@
 import type { Component } from 'vue'
 import { createQeTools } from '../../lib/qe-tools'
+import { canUsePrivilegedDevTools } from '../../lib/qe-tools/access'
 import FugueContentQeToolsDrafts from '../components/FugueContentQeToolsDrafts.vue'
 
 const QE_TOOLS_URL_PARAM = 'qetools'
@@ -45,7 +46,7 @@ export default defineNuxtPlugin({
     nuxtApp.hook('app:created', () => {
       const devtools = (nuxtApp as unknown as { $fugueDevtools?: DevToolsRegistrar }).$fugueDevtools
       if (devtools) {
-        devtools.setAccessResolver(() => import.meta.dev || sessionCheck.value === 'true')
+        devtools.setAccessResolver(() => canUsePrivilegedDevTools(import.meta.dev, sessionCheck.value))
         devtools.registerSection({
           id: 'studio-drafts',
           label: 'Studio Drafts',
