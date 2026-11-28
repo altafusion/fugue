@@ -44,6 +44,16 @@ const panelPosition = computed<DevToolsPanelPosition>({
 
 const isHorizontalDock = computed(() => isHorizontalDevToolsDock(panelPosition.value))
 
+// The tab strip names the active section, so the section only repeats its title when there are no tabs (a single section).
+const tabItems = computed(() => visibleSections.value.map(section => ({ label: section.label, value: section.id })))
+const activeTab = computed({
+  get: () => activeSection.value?.id,
+  set: (id) => {
+    if (id !== undefined)
+      api.activeId.value = String(id)
+  },
+})
+
 function toggle() {
   open.value = !open.value
 }
@@ -133,24 +143,15 @@ const drawerUi = computed(() => {
           </template>
         </DevToolsNav>
 
-        <div
+        <UTabs
           v-if="visibleSections.length > 1"
-          class="mt-2 flex flex-wrap gap-1"
-          role="tablist"
-        >
-          <UButton
-            v-for="section in visibleSections"
-            :key="section.id"
-            :label="section.label"
-            :color="activeSection?.id === section.id ? 'primary' : 'neutral'"
-            :variant="activeSection?.id === section.id ? 'soft' : 'ghost'"
-            size="xs"
-            role="tab"
-            :aria-selected="activeSection?.id === section.id"
-            :data-testid="`devtools-tab-${section.id}`"
-            @click="api.activeId.value = section.id"
-          />
-        </div>
+          v-model="activeTab"
+          :items="tabItems"
+          :content="false"
+          variant="pill"
+          size="xs"
+          class="mt-2"
+        />
 
         <div
           class="mt-3 grid grid-cols-1 gap-4"
@@ -164,7 +165,7 @@ const drawerUi = computed(() => {
               :is-horizontal-dock="isHorizontalDock"
             >
               <DevToolsSection
-                :title="activeSection.label"
+                :title="visibleSections.length > 1 ? undefined : activeSection.label"
                 :class="sectionClass"
               >
                 <component :is="activeSection.component" />

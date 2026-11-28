@@ -3,14 +3,17 @@ const {
   title,
   class: className,
 } = defineProps<{
-  title: string
+  title?: string
   class?: string
 }>()
 </script>
 
 <template>
   <section class="devtools-panel__section" :class="className">
-    <div class="devtools-panel__section-title">
+    <div
+      v-if="title"
+      class="devtools-panel__section-title"
+    >
       {{ title }}
     </div>
     <slot />
