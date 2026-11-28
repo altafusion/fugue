@@ -332,7 +332,7 @@ Feature walkthrough: **[Auth Mode](/fugue-content/starter-template/studio-access
 
 ### qeTools (operator console)
 
-Every Fugue Content app registers **`window.qeTools`** in the browser (dev and production). **Console-only** — there is no on-page panel. **`studioDrafts`** targets **production** IndexedDB drafts (Netlify); **local dev** writes to disk — use **`git restore`** instead.
+Every Fugue Content app registers **`window.qeTools`** in the browser (dev and production). It is a console API; the on-page UI is the **`@altafusion/fugue-devtools`** drawer (see below). **`studioDrafts`** targets **production** IndexedDB drafts (Netlify); **local dev** writes to disk — use **`git restore`** instead.
 
 Open **DevTools → Console**, then:
 
@@ -341,7 +341,7 @@ qeTools.help()
 await qeTools.studioDrafts.list()
 ```
 
-Optional discovery: add **`?qetools`** to the URL — help text prints to the console on load (still requires DevTools open).
+Optional discovery: add **`?qetools`** to the URL. If the site also extends **`@altafusion/fugue-devtools`** and mounts `<DevToolsPanel />`, the drawer opens and shows **Studio drafts** (list and delete, a *privileged* section, so it shows in development or when the site's `setAccessResolver` allows it). Without devtools, the help text prints to the console on load (still requires DevTools open).
 
 Import in code: **`@altafusion/fugue-content/qe-tools`** or **`@altafusion/fugue-content/qe-tools/studio-drafts`**.
 

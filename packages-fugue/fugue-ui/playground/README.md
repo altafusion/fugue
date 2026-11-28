@@ -1,6 +1,6 @@
 # Fugue UI Playground
 
-Private Nuxt app on port 7011. Extends `@altafusion/fugue-ui` (no theme, no shell), so each page shows a component working with nothing beyond Nuxt UI and VueUse. The colour-mode button in the header checks light and dark.
+Private Nuxt app on port 7011. Extends `@altafusion/fugue-ui` (no theme, no shell) and `@altafusion/fugue-devtools`, so each fugue-ui page shows a component working with nothing beyond Nuxt UI and VueUse (fugue-ui itself does not depend on devtools), and the Dev Tools page shows the self-contained `<DevToolsPanel />` (open it with `?qetools`). The colour-mode button in the header checks light and dark.
 
 ## Run
 
