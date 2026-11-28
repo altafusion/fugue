@@ -7,7 +7,9 @@
 
 /// <reference path="./types/nuxt-fugue-devtools.d.ts" />
 
+import type { Nuxt } from 'nuxt/schema'
 import { fileURLToPath } from 'node:url'
+import { readAltafusionPackages } from './utils/readAltafusionPackages'
 
 const layerRoot = fileURLToPath(new URL('.', import.meta.url))
 
@@ -17,6 +19,17 @@ export default defineNuxtConfig({
   alias: {
     '#devtools': layerRoot,
   },
+
+  modules: [
+    // Lists the site's installed `@altafusion/*` packages and versions for the Diagnostics section (read once, at build time).
+    (_options: unknown, nuxt: Nuxt) => {
+      const current = nuxt.options.runtimeConfig.public.fugueDevtools
+      nuxt.options.runtimeConfig.public.fugueDevtools = {
+        ...current,
+        packages: readAltafusionPackages(nuxt.options.rootDir),
+      }
+    },
+  ],
 
   // Ship the type augmentations (`$fugueDevtools`, runtime config) to every site that extends this layer.
   hooks: {
