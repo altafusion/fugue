@@ -27,10 +27,12 @@ export default defineNuxtConfig({
       fugueDevtools: {
         /** Set `false` when a product adapter registers its own devtools API at the app layer. */
         registerPlugin: true,
-        openParams: ['devtools'],
+        openParams: ['qetools'],
         innerToggleParams: ['devtoolstoggle'],
         persistNamespace: 'app',
         persistKey: 'devtools',
+        /** Where the drawer docks the first time (the user can move it). */
+        defaultPosition: 'bottom',
       },
     },
   },

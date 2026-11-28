@@ -4,6 +4,7 @@
 import type { Router } from 'vue-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick, reactive } from 'vue'
+import { createMemoryHistory, createRouter } from 'vue-router'
 import { createDevToolsApi } from './useDevTools'
 
 const urlConfig = {
@@ -121,5 +122,88 @@ describe('createDevToolsApi', () => {
     api.enable()
     api.disable()
     expect(router.replace).not.toHaveBeenCalled()
+  })
+
+  it('opens the drawer, not only enables it, when activated by the URL', () => {
+    const { api } = setup({ devtools: '' })
+    expect(api.chrome.value.open).toBe(true)
+  })
+
+  it('closing keeps the devtools enabled', () => {
+    const { api } = setup({ devtools: '' })
+    api.updateChrome('open', false)
+    expect(api.chrome.value.enabled).toBe(true)
+    expect(api.showPanel.value).toBe(true)
+  })
+
+  it('turns off when the param value is "off" and strips it', () => {
+    const { api, router } = setup({ devtools: 'off', page: '2' })
+    expect(api.showPanel.value).toBe(false)
+    expect(api.chrome.value.enabled).toBe(false)
+    expect(router.replace).toHaveBeenCalledWith({
+      path: '/page',
+      query: { page: '2' },
+      hash: '',
+    })
+  })
+
+  it('disable() resets the persisted chrome', async () => {
+    const { api } = setup({}, { isDev: false })
+    api.updateChrome('panelPosition', 'left')
+    api.enable()
+    api.disable()
+    await nextTick()
+    expect(JSON.parse(localStorage.getItem('app::devtools')!).chrome).toMatchObject({
+      enabled: false,
+      open: false,
+      panelPosition: 'bottom',
+    })
+  })
+
+  it('turn off, then re-enable by URL, with a router that really updates the URL', async () => {
+    const router = createRouter({
+      history: createMemoryHistory(),
+      routes: [
+        {
+          path: '/:pathMatch(.*)*',
+          component: {
+            render: () => null,
+          },
+        },
+      ],
+    })
+    await router.push('/page?devtools')
+    vi.stubGlobal('useRoute', () => new Proxy({}, {
+      get: (_, key) => (router.currentRoute.value as unknown as Record<string | symbol, unknown>)[key],
+    }))
+    const api = createDevToolsApi({
+      router,
+      isDev: false,
+      urlConfig,
+      persist,
+    })
+    expect(api.showPanel.value).toBe(true)
+
+    api.disable()
+    await vi.waitFor(() => expect(router.currentRoute.value.fullPath).toBe('/page'))
+    await nextTick()
+    expect(api.showPanel.value).toBe(false)
+
+    await router.push('/page?devtools')
+    await nextTick()
+    expect(api.showPanel.value).toBe(true)
+    expect(api.chrome.value.open).toBe(true)
+  })
+
+  it('exposes the section registry on the api', () => {
+    const { api } = setup({}, { isDev: true })
+    api.registerSection({
+      id: 'a',
+      label: 'A',
+      component: {
+        render: () => null,
+      },
+    })
+    expect(api.visibleSections.value.map(s => s.id)).toEqual(['a'])
   })
 })

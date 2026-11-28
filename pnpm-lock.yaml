@@ -638,6 +638,9 @@ importers:
 
   packages-fugue/fugue-theme/playground:
     dependencies:
+      '@altafusion/fugue-devtools':
+        specifier: workspace:*
+        version: link:../../fugue-devtools
       '@altafusion/fugue-theme':
         specifier: workspace:*
         version: link:..
@@ -706,6 +709,9 @@ importers:
 
   packages-fugue/fugue-ui/playground:
     dependencies:
+      '@altafusion/fugue-devtools':
+        specifier: workspace:*
+        version: link:../../fugue-devtools
       '@altafusion/fugue-ui':
         specifier: workspace:*
         version: link:..

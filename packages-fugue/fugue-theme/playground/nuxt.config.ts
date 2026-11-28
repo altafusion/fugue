@@ -5,7 +5,7 @@ import { devPorts, devServerOptions, devViteServerOptions } from '@altafusion/nu
  * No palette override — product brands stay in their own apps.
  */
 export default defineNuxtConfig({
-  extends: ['@altafusion/fugue-theme', '@altafusion/shell'],
+  extends: ['@altafusion/fugue-theme', '@altafusion/shell', '@altafusion/fugue-devtools'],
 
   devServer: devServerOptions(devPorts.themePlayground),
 

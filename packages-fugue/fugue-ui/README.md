@@ -41,6 +41,8 @@ A small bar fixed to the bottom of the page. The user drags it left and right by
 | `storageKey` (required) | `localStorage` key the position is remembered under |
 | `label` (required) | text on the open/close button; also names the grip and the panel |
 | `defaultPercent` | where it starts, 0 (flush left) to 100 (flush right); default `50` |
+| `align` | which end of the dock's box the bar sits at: `start`, `center` (default) or `end`. With `end` and `defaultPercent` `100` the bar's right end meets the page margin |
+| `margin` | distance in px from each page edge at 0 and 100 percent; default `8` |
 | `bottomClass` | Tailwind class for the distance from the bottom edge; default `bottom-20`. Pass a literal class that exists in your app's source, such as `bottom-4` |
 | `v-model:open` | whether the panel is showing (or, with no slot, what the button toggles) |
 

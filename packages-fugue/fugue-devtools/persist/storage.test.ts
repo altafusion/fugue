@@ -41,7 +41,12 @@ describe('persist guards', () => {
   })
 
   it('defaults to a closed bottom dock, with the inner toggle on in dev', () => {
-    expect(createDefaultDevToolsChrome()).toEqual({ enabled: false, panelPosition: 'bottom', innerToggle: false })
+    expect(createDefaultDevToolsChrome()).toEqual({
+      enabled: false,
+      open: false,
+      panelPosition: 'bottom',
+      innerToggle: false,
+    })
     expect(createDefaultDevToolsChrome(true).innerToggle).toBe(true)
   })
 })
@@ -53,7 +58,12 @@ describe('persist storage helpers', () => {
 
   it('writes the { v, chrome, domain } blob under namespace::key', () => {
     const storage = getDevToolsStorage('app')
-    const chrome = { enabled: true, panelPosition: 'left' as const, innerToggle: false }
+    const chrome = {
+      enabled: true,
+      open: true,
+      panelPosition: 'left' as const,
+      innerToggle: false,
+    }
     writeDevToolsChrome(storage, 'devtools', chrome, { flag: 1 })
     expect(JSON.parse(localStorage.getItem('app::devtools')!)).toEqual({
       v: 1,
@@ -85,7 +95,17 @@ describe('persist storage helpers', () => {
   it('restores saved chrome and falls back to defaults when nothing is saved', () => {
     const storage = getDevToolsStorage('app')
     expect(readDevToolsChrome(storage, 'devtools', true)).toEqual(createDefaultDevToolsChrome(true))
-    writeDevToolsChrome(storage, 'devtools', { enabled: true, panelPosition: 'top', innerToggle: true }, {})
-    expect(readDevToolsChrome(storage, 'devtools')).toEqual({ enabled: true, panelPosition: 'top', innerToggle: true })
+    writeDevToolsChrome(storage, 'devtools', {
+      enabled: true,
+      open: true,
+      panelPosition: 'top',
+      innerToggle: true,
+    }, {})
+    expect(readDevToolsChrome(storage, 'devtools')).toEqual({
+      enabled: true,
+      open: true,
+      panelPosition: 'top',
+      innerToggle: true,
+    })
   })
 })

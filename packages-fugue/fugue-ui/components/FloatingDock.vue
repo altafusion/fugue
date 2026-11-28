@@ -14,6 +14,8 @@ const {
   label,
   defaultPercent = 50,
   bottomClass = 'bottom-20',
+  align = 'center',
+  margin = 8,
 } = defineProps<{
   /** localStorage key the bar's position is remembered under. */
   storageKey: string
@@ -23,6 +25,10 @@ const {
   defaultPercent?: number
   /** Tailwind class for the distance from the bottom edge. It must be visible to the app's Tailwind (a literal class in its source). */
   bottomClass?: string
+  /** Which end of the dock's fixed-width box the bar sits at. With `end` and `defaultPercent` 100 the bar's right end meets the page margin. */
+  align?: 'start' | 'center' | 'end'
+  /** Distance in px from each page edge at the extremes (0 and 100 percent). */
+  margin?: number
 }>()
 
 const open = defineModel<boolean>('open', { default: false })
@@ -30,7 +36,7 @@ const open = defineModel<boolean>('open', { default: false })
 const dock = useTemplateRef<HTMLElement>('dock')
 const area = useTemplateRef<HTMLElement>('area')
 const grip = useTemplateRef<HTMLElement>('grip')
-const { dragging, dockStyle, onKeydown } = useDraggableDock(dock, grip, area, { storageKey, defaultPercent })
+const { dragging, dockStyle, onKeydown } = useDraggableDock(dock, grip, area, { storageKey, defaultPercent, margin })
 </script>
 
 <template>
@@ -60,7 +66,10 @@ const { dragging, dockStyle, onKeydown } = useDraggableDock(dock, grip, area, { 
         >
           <slot />
         </div>
-        <div class="pointer-events-auto flex w-fit items-center self-center rounded-full border border-primary/40 bg-default p-0.5 shadow-lg">
+        <div
+          class="pointer-events-auto flex w-fit items-center rounded-full border border-primary/40 bg-default p-0.5 shadow-lg"
+          :class="{ 'self-start': align === 'start', 'self-center': align === 'center', 'self-end': align === 'end' }"
+        >
           <!-- The drag handle is a plain element: pointer events bubble up to it from the button, and no component has to forward them. -->
           <div
             ref="grip"
