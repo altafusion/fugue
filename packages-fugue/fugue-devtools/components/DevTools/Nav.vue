@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { DevToolsPanelPosition } from '#devtools/persist'
+import { DEVTOOLS_LAYER_CLASSES } from '#devtools/utils/devtoolsLayers'
 
 const {
   brand = 'Dev Tools',
@@ -25,8 +26,8 @@ const dockOptions: { pos: DevToolsPanelPosition, icon: string, label: string }[]
   { pos: 'left', icon: 'i-lucide-panel-left', label: 'Dock left' },
 ]
 
-// The drawer is z-50 and the tooltip theme sets no z-index, so without this the tooltip would open underneath it.
-const tooltipUi = { content: 'z-[60]' }
+// The tooltip theme sets no z-index of its own, so without this the tooltip would open underneath the drawer.
+const tooltipUi = { content: DEVTOOLS_LAYER_CLASSES.menu }
 </script>
 
 <template>

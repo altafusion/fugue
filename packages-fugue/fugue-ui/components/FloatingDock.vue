@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { FloatingDockUi } from './floatingDock.shared'
+import { floatingDockClasses } from './floatingDock.shared'
+
 defineOptions({ name: 'FloatingDock' })
 
 /**
@@ -16,6 +19,8 @@ const {
   bottomClass = 'bottom-20',
   align = 'center',
   margin = 8,
+  zIndex = 40,
+  ui,
 } = defineProps<{
   /** localStorage key the bar's position is remembered under. */
   storageKey: string
@@ -29,7 +34,16 @@ const {
   align?: 'start' | 'center' | 'end'
   /** Distance in px from each page edge at the extremes (0 and 100 percent). */
   margin?: number
+  /**
+   * Stacking level of the whole dock (a number, or any CSS value such as `var(--my-layer)`). The default 40 puts it above page
+   * content and sticky bars and below Nuxt UI's modals and overlays (50). Raise it only for chrome that must outrank them.
+   */
+  zIndex?: number | string
+  /** Classes for the `bar` and the `panel`, merged over the defaults (Nuxt UI's `ui` convention). */
+  ui?: FloatingDockUi
 }>()
+
+const classes = computed(() => floatingDockClasses(ui))
 
 const open = defineModel<boolean>('open', { default: false })
 
@@ -50,7 +64,8 @@ const { dragging, dockStyle, onKeydown } = useDraggableDock(dock, grip, area, { 
     -->
     <div
       ref="area"
-      class="pointer-events-none fixed inset-0 z-40"
+      class="pointer-events-none fixed inset-0"
+      :style="{ zIndex }"
     >
       <div
         ref="dock"
@@ -60,15 +75,14 @@ const { dragging, dockStyle, onKeydown } = useDraggableDock(dock, grip, area, { 
       >
         <div
           v-if="open && $slots.default"
-          class="pointer-events-auto rounded-xl border border-primary/40 bg-default px-4 py-3 shadow-lg"
+          :class="classes.panel"
           role="group"
           :aria-label="label"
         >
           <slot />
         </div>
         <div
-          class="pointer-events-auto flex w-fit items-center rounded-full border border-primary/40 bg-default p-0.5 shadow-lg"
-          :class="{ 'self-start': align === 'start', 'self-center': align === 'center', 'self-end': align === 'end' }"
+          :class="[classes.bar, { 'self-start': align === 'start', 'self-center': align === 'center', 'self-end': align === 'end' }]"
         >
           <!-- The drag handle is a plain element: pointer events bubble up to it from the button, and no component has to forward them. -->
           <div

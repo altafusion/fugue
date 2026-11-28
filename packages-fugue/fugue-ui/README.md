@@ -44,6 +44,8 @@ A small bar fixed to the bottom of the page. The user drags it left and right by
 | `align` | which end of the dock's box the bar sits at: `start`, `center` (default) or `end`. With `end` and `defaultPercent` `100` the bar's right end meets the page margin |
 | `margin` | distance in px from each page edge at 0 and 100 percent; default `8` |
 | `bottomClass` | Tailwind class for the distance from the bottom edge; default `bottom-20`. Pass a literal class that exists in your app's source, such as `bottom-4` |
+| `zIndex` | stacking level of the whole dock, a number or any CSS value such as `var(--my-layer)`; default `40`, above page content and sticky bars and below Nuxt UI modals and overlays (50). Raise it only for chrome that must outrank them (the dev tools dock uses 70) |
+| `ui` | `{ bar, panel }`: classes merged over the defaults (Nuxt UI's `ui` convention), so yours win. `bar` is the pill with the grip and the label button, `panel` the box above it. Use it to restyle an editing-controls dock, say `:ui="{ bar: 'bg-elevated' }"` |
 | `v-model:open` | whether the panel is showing (or, with no slot, what the button toggles) |
 
 Pieces: `components/FloatingDock.vue`, `composables/useDraggableDock.ts` (VueUse `useDraggable` turned into one saved percentage, plus the keys), and `lib/floating-dock-position.ts` (pure position math, unit tested).
@@ -54,6 +56,7 @@ Design choices worth keeping:
 - **Only the grip drags.** The label button only toggles the panel. Handlers sit on a plain element around the grip button because forwarding pointer events through `UButton` was unreliable.
 - **One fixed width** (`w-56`) open or closed; the bar is centred in it and the panel is a separate box above it.
 - **Teleported to `body`**, so no transformed ancestor becomes the fixed reference.
+- **The `zIndex` is on the wrapper** (inline style, since it is a value rather than a literal class), so the bar and its panel always stack together. Studio only rewrites `left`, so it leaves it alone.
 
 ### Nuxt Studio moves fixed elements
 

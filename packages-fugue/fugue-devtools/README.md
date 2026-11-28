@@ -34,6 +34,31 @@ Add **`?qetools`** to any URL. That turns the dev tools on and opens the drawer,
 
 Config (`runtimeConfig.public.fugueDevtools`): `openParams` (default `['qetools']`), `innerToggleParams`, `persistNamespace`, `persistKey`, `defaultPosition` (`'bottom'`).
 
+### Stacking
+
+The dev tools always sit above the site, including Nuxt UI modals and overlays. Lowest to highest:
+
+| Level | z-index |
+|---|---|
+| page content and sticky bars | up to 30 |
+| site `FloatingDock`s such as an editing-controls dock | 40 (the `FloatingDock` default) |
+| site overlays and modals (Nuxt UI defaults) | 50 |
+| dev tools dock | 70 |
+| dev tools drawer | 75 |
+| dev tools tooltips and menus | 80 |
+
+The numbers are CSS variables (`--devtools-z-dock`, `--devtools-z-drawer`, `--devtools-z-menu`) declared once in `assets/css/devtools-panel.css`; `utils/devtoolsLayers.ts` names them and nothing else in the layer hard-codes a z-index. A site can override a variable in its own CSS. Keep a site's own dock at 40 and its overlays at 50 and the order holds.
+
+In dark mode the drawer and the dock's bar are `#1e1e77` (a class, `dark:bg-[#1e1e77]`). `DevToolsPanel` takes Nuxt UI's `ui` prop with the same two slots as `FloatingDock` (`bar` and `panel`), merged over the defaults so your classes win. Use the same object for an editing-controls dock and the dev tools:
+
+```vue
+<DevToolsPanel :ui="{ bar: 'dark:bg-[#102040]', panel: 'dark:bg-[#102040]' }" />
+```
+
+`panel` is the drawer, `bar` is the dock's toggle bar. As with any Tailwind class, the literal has to appear in your app's source.
+
+The open drawer is an opaque surface that takes the pointer: it is painted over a solid `--ui-bg` base, so a theme that makes `--ui-bg-muted` translucent (fugue-theme's black canvas does) cannot make it see-through, and a drag that ends over it is refused (`dropEffect: none`, the event stops there) instead of landing on a tile behind it. Drawer drags are off (`handle-only` with no handle), so dragging something across it starts no drawer gesture. Popovers and menus a section opens portal at Nuxt UI's z-50 and so open beneath the drawer; give those content `class="devtools-z-menu"`.
+
 ### Sections: registry first
 
 ```ts
