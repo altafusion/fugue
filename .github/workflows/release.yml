@@ -53,7 +53,12 @@ jobs:
       # the required "Lint and test" check never starts by itself. A workflow_dispatch run started with GITHUB_TOKEN is
       # allowed and needs no approval, and reports the same check on the PR's head commit.
       - name: Run CI on the version PR
-        if: steps.changesets.outputs.hasChangesets == 'true'
-        run: gh workflow run ci.yml --ref changeset-release/main
+        # `hasChangesets` was not "true" after the action opened the PR (the step was skipped on 0.6.1), so the step checks for
+        # the version PR itself instead.
+        if: steps.changesets.outputs.published != 'true'
+        run: |
+          if [ -n "$(gh pr list --head changeset-release/main --state open --json number --jq '.[].number')" ]; then
+            gh workflow run ci.yml --ref changeset-release/main
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
