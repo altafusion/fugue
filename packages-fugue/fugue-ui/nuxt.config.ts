@@ -18,6 +18,8 @@ export default defineNuxtConfig({
     tsConfig: {
       exclude: [
         resolve(__dirname, 'playground/nuxt.config.ts'),
+        // Registers sections through `$fugueDevtools`, which only exists where fugue-devtools is extended.
+        resolve(__dirname, 'playground/app/plugins/devtools-sections.client.ts'),
       ],
     },
   },

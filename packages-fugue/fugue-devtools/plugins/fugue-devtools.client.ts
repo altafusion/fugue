@@ -1,3 +1,4 @@
+import type { DevToolsPanelPosition } from '#devtools/composables/devtoolsTypes'
 import Diagnostics from '#devtools/components/DevTools/Diagnostics.vue'
 import { DEVTOOLS_INJECTION_KEY } from '#devtools/composables/devtoolsTypes'
 import { createDevToolsApi } from '#devtools/composables/useDevTools'
@@ -14,7 +15,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   const api = createDevToolsApi({
     router,
     initialChrome: devtoolsConfig.defaultPosition
-      ? { panelPosition: devtoolsConfig.defaultPosition }
+      // Nuxt types the layer's `defaultPosition` as `string` in runtime-config.d.ts; the layer config only allows the union.
+      ? { panelPosition: devtoolsConfig.defaultPosition as DevToolsPanelPosition }
       : undefined,
     isDev: import.meta.dev,
     urlConfig: {
