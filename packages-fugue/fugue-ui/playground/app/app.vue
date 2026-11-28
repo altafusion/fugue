@@ -2,6 +2,7 @@
 const links = [
   { label: 'Floating Dock', to: '/floating-dock' },
   { label: 'Dev Tools', to: '/devtools' },
+  { label: 'Layering', to: '/layering' },
 ]
 </script>
 

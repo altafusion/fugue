@@ -28,6 +28,12 @@ const groups: { title: string, components: ComponentEntry[] }[] = [
       { name: 'DevToolsPanel', description: 'A draggable dock and a drawer of debugging sections. Mount it once; ?qetools turns it on.', to: '/devtools' },
     ],
   },
+  {
+    title: 'Demo pages',
+    components: [
+      { name: 'Layering', description: 'Repro and check page for stacking: draggable tiles, a site dock, a z-50 overlay and a translucent --ui-bg-muted switch, under the dev tools drawer.', to: '/layering' },
+    ],
+  },
 ]
 
 useSeoMeta({ title: 'Fugue UI Playground' })
