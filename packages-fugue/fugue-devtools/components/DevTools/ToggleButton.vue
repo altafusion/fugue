@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DEVTOOLS_LAYER_CLASSES } from '#devtools/utils/devtoolsLayers'
+
 const {
   open,
   ariaLabel = 'Dev Tools',
@@ -15,7 +17,7 @@ const emit = defineEmits<{
 <template>
   <UTooltip
     text="Toggle Dev Tools"
-    :ui="{ content: 'z-[60]' }"
+    :ui="{ content: DEVTOOLS_LAYER_CLASSES.menu }"
   >
     <UButton
       icon="i-lucide-settings"

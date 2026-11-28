@@ -5,16 +5,39 @@
  * their own scoped prefix for domain sections (e.g. `qe-panel__*` in a product adapter).
  */
 
+/*
+ * Stacking order (see utils/devtoolsLayers.ts). The dev tools always sit above the site, including Nuxt UI modals (z-50):
+ *   page content <= 30 < site FloatingDocks 40 < site overlays 50 < dock 70 < drawer 75 < tooltips and menus 80
+ */
+:root {
+  --devtools-z-dock: 70;
+  --devtools-z-drawer: 75;
+  --devtools-z-menu: 80;
+}
+
+.devtools-z-dock {
+  z-index: var(--devtools-z-dock);
+}
+
+.devtools-z-drawer {
+  z-index: var(--devtools-z-drawer);
+}
+
+.devtools-z-menu {
+  z-index: var(--devtools-z-menu);
+}
+
 .devtools-panel {
   min-height: 100%;
   background-color: inherit;
 }
 
 .devtools-panel__surface--drawer {
-  background-color: var(--ui-bg-muted) !important;
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04));
   outline: 1px solid var(--ui-border);
+  /* The drawer takes the pointer itself (non-modal drawers leave it to the page otherwise), so nothing under it reacts. */
+  pointer-events: auto;
 }
 
 .devtools-panel__nav {
