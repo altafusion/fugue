@@ -1,5 +1,18 @@
 # @altafusion/fugue-content
 
+## 0.6.0
+
+### Minor Changes
+
+- ae2d33b: Make `DevToolsPanel` self-contained: mount `<DevToolsPanel />` once and it owns its open state, shows a draggable dock, and opens the drawer on `?qetools` (the new default `openParams`; `?qetools=off` turns it off). Sections now register through `useDevTools().registerSection()` or `nuxtApp.$fugueDevtools`, each `public` or `privileged`, with a reactive `setAccessResolver`. `@altafusion/fugue-content` registers its Studio drafts as a privileged section when fugue-devtools is installed.
+
+### Patch Changes
+
+- @altafusion/shell@0.6.0
+  - @altafusion/fugue-simple-auth@0.6.0
+  - @altafusion/fugue-theme@0.6.0
+  - @altafusion/nuxt-base@0.6.0
+
 ## 0.5.0
 
 ### Patch Changes
