@@ -1,5 +1,11 @@
 # @altafusion/shell
 
+## 0.6.1
+
+### Patch Changes
+
+- @altafusion/fugue-ui@0.6.1
+
 ## 0.6.0
 
 ### Patch Changes
