@@ -10,8 +10,11 @@ interface DevToolsRegistrar {
     id: string
     label: string
     component: Component
+    /** Lower numbers come first; the first visible section opens by default. */
+    order?: number
     access?: 'public' | 'privileged'
   }) => () => void
+  setAccessResolver: (resolver: () => boolean) => void
 }
 
 function hasQeToolsUrlParam(): boolean {
@@ -25,6 +28,9 @@ function hasQeToolsUrlParam(): boolean {
  * Registers `window.qeTools` for operator troubleshooting (dev + production).
  * When `@altafusion/fugue-devtools` is installed, the drawer is the UI over it: the Studio drafts become a (privileged)
  * section and `?qetools` opens the drawer. Without it, `?qetools` or `?qetools=1` prints the console help on load.
+ * The section is privileged, so this plugin also lets a signed-in Studio editor see it in production (in development it shows
+ * for everyone). A site that wants a stricter or wider rule calls `setAccessResolver` itself after this runs. The gate is a
+ * convenience, not security: the section only touches this browser's own drafts.
  */
 export default defineNuxtPlugin({
   name: 'fugue-content:qe-tools',
@@ -33,14 +39,17 @@ export default defineNuxtPlugin({
       return
 
     window.qeTools = createQeTools()
+    const sessionCheck = useFugueContentStudioSessionCheckCookie()
 
     // `app:created` runs after every plugin has set up, so the order of the layers does not matter.
     nuxtApp.hook('app:created', () => {
       const devtools = (nuxtApp as unknown as { $fugueDevtools?: DevToolsRegistrar }).$fugueDevtools
       if (devtools) {
+        devtools.setAccessResolver(() => import.meta.dev || sessionCheck.value === 'true')
         devtools.registerSection({
           id: 'studio-drafts',
-          label: 'Studio drafts',
+          label: 'Studio Drafts',
+          order: -10,
           component: FugueContentQeToolsDrafts,
           access: 'privileged'
         })

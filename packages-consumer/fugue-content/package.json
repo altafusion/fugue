@@ -60,6 +60,7 @@
     "@types/node": "catalog:dev",
     "better-sqlite3": "catalog:content",
     "eslint": "catalog:dev",
+    "fake-indexeddb": "6.2.8",
     "nuxt": "catalog:apps",
     "typescript": "catalog:dev",
     "vitest": "catalog:testing",
