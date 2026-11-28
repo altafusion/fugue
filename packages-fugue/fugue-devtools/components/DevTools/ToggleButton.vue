@@ -13,14 +13,18 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <UButton
-    icon="i-lucide-settings"
-    :color="open ? 'primary' : 'neutral'"
-    variant="ghost"
-    size="sm"
-    :aria-label="ariaLabel"
-    title="Toggle Dev Tools"
-    :aria-pressed="open"
-    @click="emit('toggle')"
-  />
+  <UTooltip
+    text="Toggle Dev Tools"
+    :ui="{ content: 'z-[60]' }"
+  >
+    <UButton
+      icon="i-lucide-settings"
+      :color="open ? 'primary' : 'neutral'"
+      variant="ghost"
+      size="sm"
+      :aria-label="ariaLabel"
+      :aria-pressed="open"
+      @click="emit('toggle')"
+    />
+  </UTooltip>
 </template>
