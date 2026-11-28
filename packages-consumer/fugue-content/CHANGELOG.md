@@ -1,5 +1,15 @@
 # @altafusion/fugue-content
 
+## 0.6.4
+
+### Patch Changes
+
+- fbc4be2: Fix the Studio Drafts section never showing to a signed-in editor in production. The access rule compared the `studio-session-check` cookie to the string `'true'`, but `useCookie` parses that value into the boolean `true`, so it was always false. The rule is now `canUsePrivilegedDevTools`, which compares as text like the rest of `fugue-content`, with tests for both forms.
+- @altafusion/fugue-simple-auth@0.6.4
+  - @altafusion/fugue-theme@0.6.4
+  - @altafusion/nuxt-base@0.6.4
+  - @altafusion/shell@0.6.4
+
 ## 0.6.3
 
 ### Patch Changes

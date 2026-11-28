@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/fugue-devtools",
   "type": "module",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Generic non-modal dev tools drawer for Nuxt apps — Fugue family",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-devtools#readme",
