@@ -44,4 +44,9 @@ jobs:
           pr-title: 'chore(release): version packages'
           commit-message: 'chore(release): version packages'
         env:
+          # The version PR and its pushes are made with this token. A repo secret holding a PAT or GitHub App token makes
+          # them come from a real identity, so CI starts on its own; with `GITHUB_TOKEN` (github-actions[bot]) the CI
+          # runs on changeset-release/main stop at action_required until someone approves them. Without the secret this
+          # falls back to GITHUB_TOKEN, so the workflow keeps working. Publishing authenticates with OIDC, not this token.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
