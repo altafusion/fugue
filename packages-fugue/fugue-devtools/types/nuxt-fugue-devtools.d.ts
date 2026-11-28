@@ -15,7 +15,7 @@ declare module 'nuxt/schema' {
 
 declare module '#app' {
   interface NuxtApp {
-    $fugueDevtools?: import('#devtools/composables/devtoolsTypes').DevToolsApi
+    $fugueDevtools?: import('../composables/devtoolsTypes').DevToolsApi
   }
 }
 

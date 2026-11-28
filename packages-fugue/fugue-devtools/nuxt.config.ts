@@ -18,6 +18,15 @@ export default defineNuxtConfig({
     '#devtools': layerRoot,
   },
 
+  // Ship the type augmentations (`$fugueDevtools`, runtime config) to every site that extends this layer.
+  hooks: {
+    'prepare:types': ({ references }) => {
+      references.push({
+        path: fileURLToPath(new URL('./types/nuxt-fugue-devtools.d.ts', import.meta.url)),
+      })
+    },
+  },
+
   css: [
     fileURLToPath(new URL('./assets/css/devtools-panel.css', import.meta.url)),
   ],
