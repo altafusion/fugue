@@ -58,16 +58,6 @@ const dockOptions: { pos: DevToolsPanelPosition, icon: string, label: string }[]
         @click="emit('positionChange', pos)"
       />
       <UButton
-        icon="i-lucide-power"
-        color="neutral"
-        variant="ghost"
-        size="xs"
-        data-testid="devtools-panel-turn-off"
-        aria-label="Turn off dev tools"
-        title="Turn off (add the activation param to the URL to bring it back)"
-        @click="emit('turnOff')"
-      />
-      <UButton
         icon="i-lucide-x"
         color="neutral"
         variant="ghost"
@@ -76,6 +66,16 @@ const dockOptions: { pos: DevToolsPanelPosition, icon: string, label: string }[]
         aria-label="Close dev tools"
         title="Close"
         @click="emit('close')"
+      />
+      <UButton
+        icon="i-lucide-circle-x"
+        color="neutral"
+        variant="ghost"
+        size="xs"
+        data-testid="devtools-panel-turn-off"
+        aria-label="Turn off dev tools"
+        title="Turn off dev tools (add the activation param to the URL to bring it back)"
+        @click="emit('turnOff')"
       />
     </div>
   </div>
