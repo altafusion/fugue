@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { summarizePackageVersions } from '#devtools/utils/altafusionPackages'
+import { formatAppInfo } from '#devtools/utils/appInfo'
 
 /** Built-in public section: safe for any visitor to see, and handy to paste into a bug report. */
 const route = useRoute()
@@ -15,7 +16,12 @@ function measure() {
 onMounted(() => window.addEventListener('resize', measure))
 onBeforeUnmount(() => window.removeEventListener('resize', measure))
 
+const app = formatAppInfo(useRuntimeConfig().public.fugueDevtools.app)
+
 const rows = computed(() => ({
+  ...(app
+    ? { app }
+    : {}),
   url: route.fullPath,
   viewport: `${width.value}x${height.value}`,
   theme: colorMode.value,

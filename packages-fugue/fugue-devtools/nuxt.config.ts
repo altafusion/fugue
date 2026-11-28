@@ -10,6 +10,7 @@
 import type { Nuxt } from 'nuxt/schema'
 import { fileURLToPath } from 'node:url'
 import { readAltafusionPackages } from './utils/readAltafusionPackages'
+import { readAppInfo } from './utils/readAppInfo'
 
 const layerRoot = fileURLToPath(new URL('.', import.meta.url))
 
@@ -21,12 +22,17 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    // Lists the site's installed `@altafusion/*` packages and versions for the Diagnostics section (read once, at build time).
+    // Reads the site's installed `@altafusion/*` packages and versions, and its own name, version and commit, for the Diagnostics section (once, at build time).
     (_options: unknown, nuxt: Nuxt) => {
       const current = nuxt.options.runtimeConfig.public.fugueDevtools
       nuxt.options.runtimeConfig.public.fugueDevtools = {
         ...current,
         packages: readAltafusionPackages(nuxt.options.rootDir),
+        // What the site sets in its own `nuxt.config` (say, a release name) wins over what is read here.
+        app: {
+          ...readAppInfo(nuxt.options.rootDir),
+          ...current.app,
+        },
       }
     },
   ],
