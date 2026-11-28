@@ -1,5 +1,14 @@
 # @altafusion/fugue-content
 
+## 0.6.1
+
+### Patch Changes
+
+- @altafusion/fugue-simple-auth@0.6.1
+  - @altafusion/fugue-theme@0.6.1
+  - @altafusion/nuxt-base@0.6.1
+  - @altafusion/shell@0.6.1
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @altafusion/fugue-devtools
 
+## 0.6.1
+
+### Patch Changes
+
+- 1c6cc70: Fix a typecheck error in consuming sites: the plugin passed the runtime-config `defaultPosition` (typed `string`) to `panelPosition`, which only accepts `'left' | 'right' | 'top' | 'bottom'`.
+  
+  The layer now also ships its type augmentations (`$fugueDevtools`, runtime config) to sites that extend it, and the fugue-ui playground's devtools plugin is left out of the type-check of other apps, so `pnpm typecheck` is green.
+- @altafusion/fugue-ui@0.6.1
+
 ## 0.6.0
 
 ### Minor Changes
