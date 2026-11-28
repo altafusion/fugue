@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/fugue-ui",
   "type": "module",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Generic Vue UI primitives on Nuxt UI — reusable across Altafusion apps",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-ui#readme",

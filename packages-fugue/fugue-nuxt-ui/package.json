@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/fugue-nuxt-ui",
   "type": "module",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Unbranded Nuxt UI + Tailwind base layer for the Fugue family (no product brand tokens or fonts)",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-nuxt-ui#readme",
