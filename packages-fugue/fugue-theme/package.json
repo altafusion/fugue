@@ -1,7 +1,7 @@
 {
   "name": "@altafusion/fugue-theme",
   "type": "module",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Optional Fugue theme layer — neutral tokens, theme CSS, Tailwind entry, dark-canvas",
   "license": "MIT",
   "homepage": "https://github.com/altafusion/fugue/tree/main/packages-fugue/fugue-theme#readme",
