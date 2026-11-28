@@ -9,6 +9,10 @@ declare module 'nuxt/schema' {
       persistNamespace?: string
       persistKey?: string
       defaultPosition?: 'top' | 'right' | 'bottom' | 'left'
+      /** The site's installed `@altafusion/*` packages and versions, filled in at build time. */
+      packages?: Record<string, string>
+      /** The site's own name, version and build commit, filled in at build time; set a field in `nuxt.config` to override it. */
+      app?: import('../utils/appInfo').AppInfo
     }
   }
 }
